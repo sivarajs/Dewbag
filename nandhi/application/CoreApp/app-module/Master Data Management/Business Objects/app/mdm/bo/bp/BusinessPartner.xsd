@@ -1,0 +1,18 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.bp" xmlns="app.mdm.bo.bp" xmlns:r="app.core.bo" xmlns:l="app.core.bo.location">
+
+	<xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/AppEntity.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="BusinessPartner">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+				    <xsd:element name="name" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="name"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+  <xsd:element name="businessPartner" type="BusinessPartner"/>
+  
+</xsd:schema>

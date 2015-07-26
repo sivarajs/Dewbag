@@ -1,0 +1,22 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.mdm.bo.acc" xmlns="app.mdm.bo.acc" xmlns:domain="app.bo.core.domain" xmlns:r="app.core.bo">
+
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/PropertyGroup.xsd" namespace="app.core.bo"/>
+    <xsd:include schemaLocation="Bank.xsd"/>
+
+
+	<xsd:complexType name="BankAccount">
+		<xsd:sequence>
+			<xsd:element ref="r:id"/>
+			<xsd:element ref="bank"/>
+			<xsd:element name="number" type="xsd:int" />
+			<xsd:element ref="type"/>
+			<xsd:element name="code" type="xsd:string" />
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="bank,number" />
+	</xsd:complexType>
+
+    <xsd:element name="type" type="r:PropertyGroup"/>
+
+</xsd:schema>

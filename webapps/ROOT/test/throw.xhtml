@@ -1,0 +1,4 @@
+<c:entity columns="1" name="Customer" filter="id=#{session.user.resourceId}" xmlns:a="nandhi.app.ui.activity" xmlns:c="nandhi.app.ui.component" >
+  
+      <a:throw condition="#{customer.firstName} == null" message="Please update your address to checkout" link="/customer/profile.xhtml?checkout=y"/>
+</c:entity>      

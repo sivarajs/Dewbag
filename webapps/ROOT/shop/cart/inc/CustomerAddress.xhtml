@@ -1,0 +1,27 @@
+  <c:entity columns="1" name="CustomerAddress" filter="id=#{query.id}" xmlns:c="nandhi.app.ui.component" >
+  
+      <span id="custAddrId" style="display:none">#{customerAddress.address.id}</span>   
+      <div id="coAddress">   
+        <p>
+          <c:outputText value="#{customerAddress.address.address1}"/>
+        </p>
+        <p>
+          <c:outputText value="#{customerAddress.address.address2}"/>
+        </p>
+        <p>
+          <c:outputText value="#{customerAddress.address.landmark}"/>
+        </p>
+        <p>
+          <c:outputText value="#{customerAddress.address.city}"/>
+        </p>
+        <p>
+          <c:outputText value="#{customerAddress.address.state}"/>
+        </p>
+        <p>
+          <c:outputText value="#{customerAddress.address.country}"/>
+        </p>
+        <p>
+          <c:outputText value="#{customerAddress.address.pin}"/>
+        </p>
+      </div>
+  </c:entity>

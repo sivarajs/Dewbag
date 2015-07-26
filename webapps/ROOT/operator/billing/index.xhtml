@@ -1,0 +1,11 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="content">
+    <h1>Customer Billing</h1>
+
+    <c:panelGrid>    
+      <c:inputText label="Customer Mobile" name="custMobile" id="custMobile"/>
+      <button onclick="var v=document.getElementById('custMobile').value;if (sys.isValid(v)) {window.location = '/operator/billing/profile.xhtml?mobile='+v;}">Get</button>
+    </c:panelGrid>
+  </c:parameter>
+</c:template>

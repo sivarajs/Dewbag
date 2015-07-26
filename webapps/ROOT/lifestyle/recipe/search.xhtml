@@ -1,0 +1,25 @@
+<c:template src="/common/template/lifestyle/RecipeHome.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Check Out" />
+
+  <c:parameter name="content">
+    <h1>Recipes</h1>
+    
+   <div style="width:100%">
+	    <c:include src="/lifestyle/recipe/inc/SearchBox.xhtml"/>
+	    
+	    <div style="float:left;margin-left:20px;width:73%">
+	      <div class="box">
+		       <c:entityGrid entity="Recipe" filter="name=[like]#{query.name}">
+		          <a href="/lifestyle/recipe/info.xhtml?i=#{recipe.id}"><h2>#{recipe.name}</h2></a>
+		          <c:entity name="RecipeImage" filter="entityId=#{recipe.id}&amp;isThumbnail=Y">
+		            <p align="left"><img src="#{recipeImage.image}" style="float:left;width:150px;margin-right:10px;"/><span>#{recipe.description}</span></p>
+			      </c:entity>
+		          <div class="clr"/>
+			      <div class="ln"/>
+		       </c:entityGrid>
+		   </div>    
+	    </div>
+    </div>
+  </c:parameter>
+</c:template>

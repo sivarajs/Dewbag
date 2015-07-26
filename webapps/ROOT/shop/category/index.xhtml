@@ -1,0 +1,39 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component" xmlns:b="nandhi.app.ui.block">
+
+  <c:variable name="page.title" value="Fresh and quality products at the best price"/>
+
+  <c:parameter name="content">
+      <c:categoryBreadCrumb styleClass="breadCrumb"/>
+      <h1>#{productCategory.name}</h1>
+      
+      <div class="catContent">
+        <c:subCategoryList resource="ProductCategory" filter="tags=[like]#{store.name}&amp;qualifiedName=[like]#{productCategory.qualifiedName}&amp;orderBy=sortOrder"/>
+        <div style="float: none;width: auto;margin-left:200px">
+          <div id="itemsDiv">
+             <b:if condition="#{store.name} == null">
+                <c:productGrid columns="4" filter="product.productCategory.qualifiedName=[like]#{productCategory.qualifiedName}&amp;isActive=Y&amp;orderBy=product.name,sortOrder&amp;pageSize=40" escape="true" style="margin-left:5px">
+                  <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/> 
+                </c:productGrid>
+             </b:if>
+             <b:if condition="#{store.name} != null">
+                <c:productGrid columns="4" filter="product.productCategory.qualifiedName=[like]#{productCategory.qualifiedName}&amp;tags=[like]#{store.name}&amp;isActive=Y&amp;orderBy=product.name,sortOrder&amp;pageSize=40" escape="true" style="margin-left:5px">
+                  <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/> 
+                </c:productGrid>
+             </b:if>
+          </div>    
+          <div id="pageLoader" page="1">
+            <div id="ajaxPageLoader" style="float:left;width:20px;"/>
+            <c:outputLink style="margin-left:20px" value="#{store.root}/category/items.xhtml&#63;qName=#{productCategory.qualifiedName}" id="nextPageLink" escape="true" onclick="return false;">Loading Next Page...</c:outputLink>
+          </div>  
+          <script type="text/javascript">
+            (function() { 
+            	initProductThumbnailPage();
+            	productPageLoader.init(); 
+             })();
+          </script>
+        </div>
+        <div class="clr"/>  
+      </div>
+      
+  </c:parameter>
+</c:template>

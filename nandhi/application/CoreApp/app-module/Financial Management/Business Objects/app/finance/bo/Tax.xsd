@@ -1,0 +1,24 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.finance.bo" xmlns="app.finance.bo" xmlns:b="app.core.bo">
+    
+	<xsd:include schemaLocation="TaxCategory.xsd"/>
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/AppEntity.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="Tax">
+		<xsd:complexContent>
+			<xsd:extension base="b:AppEntity">
+				<xsd:sequence>
+				    <xsd:element name="name" type="xsd:string"/>
+				    <xsd:element ref="taxCategory"/>
+				    <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+				    <xsd:element name="rate" type="xsd:float"/>
+				    <xsd:element name="effectiveFrom" type="xsd:date"/>
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="name"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+    <xsd:element name="tax" type="Tax"/>
+    
+</xsd:schema>

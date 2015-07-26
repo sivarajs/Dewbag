@@ -1,0 +1,28 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo.security" xmlns="app.core.bo.security" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../AppEntity.xsd" namespace="app.core.bo" />
+	<xsd:include schemaLocation="Role.xsd" />
+
+	<xsd:complexType name="User">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+				    <xsd:element name="name" type="xsd:string"/>
+					<xsd:element name="email" type="xsd:string" minOccurs="0"/>
+					<!--  It may not be unique, as it may be used with multiple accounts -->
+					<xsd:element name="mobile" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="password" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="accessToken" type="xsd:string" minOccurs="0"/>
+					<xsd:element ref="primaryRole"/>
+					<xsd:element name="resourceId" type="xsd:long" minOccurs="0"/>
+					<xsd:element name="state" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="email"/>
+			</xsd:extension>
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+    <xsd:element name="primaryRole" type="Role"/>
+</xsd:schema>

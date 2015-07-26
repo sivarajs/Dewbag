@@ -1,0 +1,28 @@
+<html xmlns:c="nandhi.app.ui.component">
+
+  <c:include src="/common/HtmlHead.xhtml"/>
+  
+  <body>
+    <div id="db">
+      <div id="dbHeader" >
+		 <div class="top">
+		     <div class='right' align='right'>
+		 
+		     </div>
+		     <div class='left'>
+			       <a href="/index.xhtml">
+			         <div class="logo">
+			            
+			         </div>
+			       </a>
+			 </div>
+			 
+		  </div>
+	  </div> 
+      <hr/>  
+      <div id="dbContent" >
+         <c:parameter name="content"/>
+      </div>
+    </div> 
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo" xmlns="app.core.bo">
+    
+    <xsd:include schemaLocation="BOCommon.xsd"/>
+    
+	<xsd:complexType name="AppEntity" abstract="true">
+		<xsd:sequence>
+			<xsd:element ref="id"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

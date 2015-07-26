@@ -1,0 +1,23 @@
+<application name="Dewbag Retail Application">
+  
+  <binding-component>
+    <resource-class-registry-class></resource-class-registry-class>
+  </binding-component>
+  
+  <application-engine>
+     <resource-lifecycle-listeners>
+       <resource-lifecycle-listener>nandhi.app.designer.ApplicationLifeCycleListener</resource-lifecycle-listener>
+     </resource-lifecycle-listeners>
+  </application-engine>
+
+  <persistent-store>
+    <persistent-unit>retail-domain</persistent-unit>
+  </persistent-store>
+  
+  <properties>
+    <property name="persistent-unit">retail-domain</property>
+    <property name="datasource-jndi">jdbc/retailDB</property>
+    <property name="jpa-provider-class">org.hibernate.ejb.HibernatePersistence</property>
+    <property name="resource-class-registry">dewbag.retail.DewbagResourceClassRegistry</property>
+  </properties>
+</application>

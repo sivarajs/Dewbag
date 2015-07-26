@@ -1,0 +1,170 @@
+<div xmlns:c="nandhi.app.ui.component">
+	<c:entityTable entity="Product" filter="productCategory.id=#{query.id}">
+		<c:columns>
+			<c:column label="Brand" value="#{product.brand}" width="200" />
+			<c:column label="Name" value="#{product.name}"/>
+		</c:columns>
+	</c:entityTable>
+	<c:tabs visibleOnVar="product">
+		<c:tab title="Information">
+			<c:entityForm entity="Product">
+				<c:inputHidden value="#{product.productCategory.id}" default="#{query.id}" />
+				<c:panelGrid labelStyle="width:100px">
+				    <c:inputText label="Brand" value="#{product.brand}" />
+					<c:inputText label="Name" value="#{product.name}" />
+					<c:selectBooleanCheckBox label="Is Active?"
+						value="#{product.isActive}" />
+					<c:inputText label="Tags" value="#{product.tags}" />	
+					<c:inputTextarea label="Description" type="rich" value="#{product.description}" />	
+				</c:panelGrid>
+			</c:entityForm>
+		</c:tab>
+		<c:tab title="Images">
+            <c:entityTable entity="ProductImage" filter="productId=#{product.id}">
+              <c:columns>
+                <c:column label="Image" value="#{productImage.image}" sortable="true" width="400"/>
+              </c:columns>
+            </c:entityTable>
+            <c:panelGroup title="Information" visibleOnVar="productImage">
+              <c:entityForm entity="ProductImage">
+                <c:inputHidden value="#{productImage.productId}" var="#{product.id}" />
+                <c:panelGrid>
+                  <c:inputFile value="#{productImage.image}" label="Image" />
+                  <c:selectBooleanCheckBox value="#{productImage.isThumbnail}" label="Is Thumbnail?" />
+                </c:panelGrid>
+              </c:entityForm>
+            </c:panelGroup>
+          </c:tab>
+          
+          
+          <c:tab title="Product Items">
+            <c:tabs>
+              <c:tab title="Regular">
+	            <c:entityTable entity="ProductLineItem" filter="product.id=#{product.id}&amp;tags=[like]regular" >
+	              <c:columns>
+	                <c:column label="Item Id" value="#{productLineItem.id}" width="100" sortable="true" />
+	                <c:column label="Product Name" value="#{productLineItem.product.name}" width="200" sortable="true" />
+	                <c:column label="quantity" value="#{productLineItem.quantity}" width="100" />
+	                <c:column label="Unit Of Measure" value="#{productLineItem.unitOfMeasure.value}" width="70" />
+	                <c:column label="MRP" value="#{productLineItem.mrp}" width="70" />
+	                <c:column label="Discount" value="#{productLineItem.discount}#{productLineItem.discountType.value}" width="70" />
+	                <c:column label="Default?" value="#{productLineItem.isDefault}" width="70" />
+	                <c:column label="Sort Order" value="#{productLineItem.sortOrder}" />
+	              </c:columns>
+	            </c:entityTable>
+	
+	              <c:tabs visibleOnVar="productItem">
+                <c:tab title="Information">
+                  <c:entityForm entity="ProductLineItem">
+                    <c:inputHidden value="#{productLineItem.product.id}"
+                      var="#{product.id}" />
+                      <c:inputHidden value="#{productLineItem.tags}" default="regular"/>
+                    <c:panelGrid columns="2">
+                      <c:inputInt value="#{productLineItem.code}"
+                        label="SKU" />
+                      <!-- <c:inputFile value="#{productLineItem.image}" label="Image" 
+                        /> -->
+                      <c:inputText value="#{productLineItem.quantity}"
+                        label="Quantity" />
+                      <c:selectOneEntityMenu value="#{productLineItem.unitOfMeasure.value}" label="Unit Of Measure" entity="PropertyGroup" filter="name=unit-of-measure"/>
+                      <c:selectOneEntityMenu value="#{productLineItem.packageType.value}" label="Package Type" entity="PropertyGroup" filter="name=package-type"/>
+                      <c:inputText value="#{productLineItem.mrp}" label="MRP" />
+                      <c:selectOneEntityMenu value="#{productLineItem.discountType.value}" label="Discount Type" entity="PropertyGroup" filter="name=discount-type"/>
+                      <c:inputText value="#{productLineItem.discount}" label="Discount" />                      
+                      <c:inputText value="#{productLineItem.sortOrder}" label="Sort Order" />
+                      <c:selectBooleanCheckBox value="#{productLineItem.isDefault}" label="Is Default in Thumbnail?" />
+                      <c:selectBooleanCheckBox value="#{productLineItem.isActive}" label="Is Active?" />
+                      <c:selectBooleanCheckBox value="#{productLineItem.inStock}" label="In Stock?" />  
+                    </c:panelGrid>
+                  </c:entityForm>
+                </c:tab>
+                <c:tab title="Images">
+                  <c:entityTable entity="ProductLineItemImage"
+                    filter="productId=#{product.id}&amp;productLineItemId=#{productLineItem.id}"
+                    autoLoad="false">
+                    <c:columns>
+                      <c:column label="Image" value="#{productLineItemImage.image}" sortable="true" />
+                    </c:columns>
+                  </c:entityTable>
+                  <c:panelGroup title="Image" visibleOnVar="productLineItemImage">
+                    <c:entityForm entity="ProductLineItemImage">
+                      <c:inputHidden value="#{productLineItemImage.productId}" var="#{product.id}" />
+                      <c:inputHidden value="#{productLineItemImage.productLineItemId}" var="#{productLineItem.id}" />
+                      <c:panelGrid>
+                        <c:inputFile value="#{productLineItemImage.image}" label="Image" />
+                        <c:selectBooleanCheckBox value="#{productLineItemImage.isThumbnail}" label="Is Thumbnail?" />
+                      </c:panelGrid>
+                    </c:entityForm>
+                  </c:panelGroup>
+                </c:tab>
+              </c:tabs>
+            </c:tab>
+            
+             <c:tab title="Organic">
+	            <c:entityTable entity="ProductLineItem" filter="product.id=#{product.id}&amp;tags=[like]organic" var="organicProductLineItem">
+	              <c:columns>
+	                <c:column label="Item Id" value="#{organicProductLineItem.id}" width="100" sortable="true" />
+	                <c:column label="Product Name" value="#{organicProductLineItem.product.name}" width="200" sortable="true" />
+	                <c:column label="quantity" value="#{organicProductLineItem.quantity}" width="100" />
+	                <c:column label="Unit Of Measure" value="#{organicProductLineItem.unitOfMeasure.value}" width="70" />
+	                <c:column label="MRP" value="#{organicProductLineItem.mrp}" width="70" />
+	                <c:column label="Discount" value="#{organicProductLineItem.discount}#{productLineItem.discountType.value}" width="70" />
+	                <c:column label="Default?" value="#{organicProductLineItem.isDefault}" width="70" />
+	                <c:column label="Sort Order" value="#{organicProductLineItem.sortOrder}" />
+	              </c:columns>
+	            </c:entityTable>
+	
+	              <c:tabs visibleOnVar="organicProductLineItem">
+                <c:tab title="Information">
+                  <c:entityForm entity="ProductLineItem" listenVar="organicProductLineItem">
+                    <c:inputHidden value="#{organicProductLineItem.product.id}"
+                      var="#{product.id}" />
+                       <c:inputHidden value="#{organicProductLineItem.tags}"
+                      default="organic" />
+                    <c:panelGrid columns="2">
+                      <c:inputInt value="#{organicProductLineItem.code}"
+                        label="SKU" />
+                      <!-- <c:inputFile value="#{organicProductLineItem.image}" label="Image" 
+                        /> -->
+                      <c:inputText value="#{organicProductLineItem.quantity}"
+                        label="Quantity" />
+                      <c:selectOneEntityMenu value="#{organicProductLineItem.unitOfMeasure.value}" label="Unit Of Measure" entity="PropertyGroup" filter="name=unit-of-measure"/>
+                      <c:selectOneEntityMenu value="#{organicProductLineItem.packageType.value}" label="Package Type" entity="PropertyGroup" filter="name=package-type"/>
+                      <c:inputText value="#{organicProductLineItem.mrp}" label="MRP" />
+                      <c:selectOneEntityMenu value="#{organicProductLineItem.discountType.value}" label="Discount Type" entity="PropertyGroup" filter="name=discount-type"/>
+                      <c:inputText value="#{organicProductLineItem.discount}" label="Discount" />                      
+                      <c:inputText value="#{organicProductLineItem.sortOrder}" label="Sort Order" />
+                      <c:selectBooleanCheckBox value="#{organicProductLineItem.isDefault}" label="Is Default in Thumbnail?" />
+                      <c:selectBooleanCheckBox value="#{organicProductLineItem.isActive}" label="Is Active?" />
+                      <c:selectBooleanCheckBox value="#{organicProductLineItem.inStock}" label="In Stock?" />  
+                    </c:panelGrid>
+                  </c:entityForm>
+                </c:tab>
+                <c:tab title="Images">
+                  <c:entityTable entity="ProductLineItemImage"
+                    filter="productId=#{product.id}&amp;productLineItemId=#{organicProductLineItem.id}"
+                    var="orgProductLineItemImage">
+                    <c:columns>
+                      <c:column label="Image" value="#{orgProductLineItemImage.image}" sortable="true" />
+                    </c:columns>
+                  </c:entityTable>
+                  <c:panelGroup title="Image" visibleOnVar="orgProductLineItemImage">
+                    <c:entityForm entity="ProductLineItemImage" listenVar="orgProductLineItemImage">
+                      <c:inputHidden value="#{productLineItemImage.productId}" var="#{product.id}" />
+                      <c:inputHidden value="#{productLineItemImage.productLineItemId}" var="#{organicProductLineItem.id}" />
+                      <c:panelGrid>
+                        <c:inputFile value="#{productLineItemImage.image}" label="Image" />
+                        <c:selectBooleanCheckBox value="#{productLineItemImage.isThumbnail}" label="Is Thumbnail?" />
+                      </c:panelGrid>
+                    </c:entityForm>
+                  </c:panelGroup>
+                </c:tab>
+              </c:tabs>
+            </c:tab>
+            
+            </c:tabs>
+          </c:tab>
+          
+          
+	</c:tabs>
+</div>

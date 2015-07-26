@@ -1,0 +1,22 @@
+<div xmlns:c="nandhi.app.ui.component">
+  
+  <h1>Tax Rates</h1>
+   
+   <c:entityTable entity="Tax">
+    <c:columns>
+       <c:column label="Name" value="#{tax.name}" width="200"/>
+       <c:column label="Category" value="#{tax.taxCategory.name}" width="200"/>
+       <c:column label="Rate" value="#{tax.rate}"/>
+    </c:columns>
+  </c:entityTable>  
+    
+  <c:panelGroup visibleOnVar="tax">
+    <c:entityForm entity="Tax">
+      <c:panelGrid columns="1" labelStyle="width:70px">
+        <c:inputText label="Name" value="#{tax.name}"/>
+        <c:selectOneEntityMenu value="#{tax.taxCategory.name}" label="Category" entity="TaxCategory"/>
+        <c:inputDecimal label="Rate(%)" value="#{tax.rate}"/>
+      </c:panelGrid>
+    </c:entityForm>
+  </c:panelGroup>  
+</div>

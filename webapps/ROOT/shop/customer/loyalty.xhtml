@@ -1,0 +1,14 @@
+<c:template src="/common/template/Customer.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="content">
+
+    <c:panelGroup title="Your Loyalty Points" styleClass="accContent">
+      <c:entity name="CustomerLoyalty" filter="customerId=#{session.user.resourceId}">
+        <p>You have <span style='font-size:150%;font-weight: bold'>#{customerLoyalty.points}</span> points</p>
+      </c:entity>
+
+    </c:panelGroup>
+
+  </c:parameter>
+
+</c:template>

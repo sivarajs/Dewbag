@@ -1,0 +1,24 @@
+<div class="tnProduct" id="productInfo-#{productLineItem.id}" xmlns:c="nandhi.app.ui.component" xmlns:b="nandhi.app.ui.block">
+
+  <div class="pTNImg" style="height:150px;">
+    <c:productTags/>
+    <c:outputLink value="/product#{productLineItem.product.productCategory.qualifiedName}/#{productLineItem.product.brand}~#{productLineItem.product.name}/#{productLineItem.quantity} #{productLineItem.unitOfMeasure.value}"  styleClass="tnProductTitle">
+         <c:thumbnailProductImage productId="#{productLineItem.product.id}" productLineItemId="#{productLineItem.id}"/>
+    </c:outputLink>
+  </div>
+ 
+  <c:outputLink value="/product#{productLineItem.product.productCategory.qualifiedName}/#{productLineItem.product.brand}~#{productLineItem.product.name}/#{productLineItem.quantity} #{productLineItem.unitOfMeasure.value}"  styleClass="tnProductTitle">
+      <p style="word-wrap:break-word;"> <c:outputText rendered="productLineItem.product.brand != null" value="#{productLineItem.product.brand}"/>
+      #{productLineItem.product.name} #{productLineItem.quantity} #{productLineItem.unitOfMeasure.value}</p>
+  </c:outputLink>
+   <!-- <c:productPrice/> -->
+   <b:if condition="#{productLineItem.discount} == 0.0">
+    <div class="productPrice">Rs. #{productLineItem.mrp}</div>
+  </b:if>
+  <b:if condition="#{productLineItem.discount} != 0.0">
+    <div class="productPrice"><del>Rs. #{productLineItem.mrp}</del> #{productLineItem.price}</div>
+  </b:if>
+  <c:include src="/shop/product/inc/Buy.xhtml"/> 
+</div>
+          
+

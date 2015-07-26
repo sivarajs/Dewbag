@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <link href="/fw/theme/basic/css/fw.css" type="text/css" rel="stylesheet" />
+  <script src="js/fw.js" type="text/javascript" />
+</head>
+<body>
+	<div xmlns:c="nandhi.app.ui.component">
+	  <c:entityTable entity="Application" title="Applications">
+	        <c:filters>
+	          <c:filter label="Name" value="#{application.name}"/>
+	        </c:filters>
+	        <c:toolbar>
+	           <c:toolbarCommand label="Deploy" bgClass="DeployApp"/>
+	        </c:toolbar>
+		    <c:columns>
+		       <c:column label="Name" value="#{application.name}"/>
+		       <c:column label="Name" value="#{application.name}" width="200"/>
+		    </c:columns>
+		</c:entityTable>
+		<c:panelGroup title="Selected Application">
+		   <c:inputText/>
+		</c:panelGroup>
+		
+		<c:panelGroup>
+		   <c:inputText/>
+		</c:panelGroup>
+		
+		<br/>
+		<c:popup title="Test" style="left:10px;bottom:10px;width:500px">
+		
+		  <c:inputText label="Test1" value="#{application.name}"/>
+		  <br/>
+		  <c:inputText label="Test1" value="#{application.name}"/>
+		  <br/>
+		  <c:inputText label="Test1" value="#{application.name}"/>
+		</c:popup>
+		  
+	</div>
+	
+	
+</body>
+</html>

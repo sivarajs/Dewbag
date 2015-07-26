@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.bp" xmlns="app.mdm.bo.bp" xmlns:r="app.core.bo" xmlns:l="app.core.bo.location">
+
+   
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/location/Address.xsd" namespace="app.core.bo.location"/>
+	
+	<xsd:complexType name="CustomerAddress">
+		<xsd:sequence>
+		    <xsd:element ref="r:id"/>
+		    <xsd:element name="customerId" type="xsd:long"/>
+ 			<xsd:element name="address" type="l:Address"/>
+            <xsd:element name="isPrimary" type="xsd:boolean" minOccurs="0"/>    
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="customerId,address"/>
+ 	</xsd:complexType>
+
+</xsd:schema>

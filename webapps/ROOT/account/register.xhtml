@@ -1,0 +1,28 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Fresh and quality products at the best price"/>
+
+  <c:parameter name="content">
+     
+     <div style="width:47%;float:left;">
+       <c:include src="/account/RegisterPanel.xhtml"/>
+     </div>
+     
+      <div style="width:47%;margin-left:10px;float:left;">
+      <table style="width:100%">
+       <tr valign="middle">
+        <td width="19">OR</td>
+        <td style="padding-left:10px">
+          <c:include src="/account/LoginPanel.xhtml"/>
+        </td>
+        </tr>  
+       </table>
+     </div>  
+     
+     <script type="text/javascript">
+      (function() {
+        document.getElementById("emailReg").focus();
+      })();
+      </script>
+  </c:parameter>
+</c:template>

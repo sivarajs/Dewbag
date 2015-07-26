@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="retail.shop.bo" xmlns="retail.shop.bo" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../../../../../../../CoreApp/app-module/Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="CustomerTemplate">
+		<xsd:sequence>
+		    <xsd:element ref="r:id" />
+			<xsd:element name="customerId" type="xsd:long" />
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="createdOn" type="xsd:date"/>
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="customerId,name"/>
+	</xsd:complexType>
+
+
+   <xsd:element name="customerTemplate" type="CustomerTemplate"/>
+</xsd:schema>

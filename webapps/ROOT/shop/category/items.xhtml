@@ -1,0 +1,3 @@
+	<c:productGrid xmlns:c="nandhi.app.ui.component" columns="4" filter="product.productCategory.qualifiedName=[like]#{query.qName}&amp;isActive=Y&amp;orderBy=product.name,sortOrder&amp;pageNo=#{query.pageNo}&amp;pageSize=40" style="margin-left:5px">
+	     <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/> 
+	</c:productGrid>

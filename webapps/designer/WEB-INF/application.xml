@@ -1,0 +1,22 @@
+<application name="DesignerApplication">
+  
+  <binding-component>
+    <resource-class-registry-class>nandhi.app.designer.DesignerResourceClassRegistry</resource-class-registry-class>
+  </binding-component>
+  
+  <application-engine>
+     <resource-repository-class>nandhi.app.designer.repository.DesignerResourceRepository</resource-repository-class>
+     <resource-lifecycle-listeners>
+       <resource-lifecycle-listener>nandhi.app.designer.ApplicationLifeCycle</resource-lifecycle-listener>
+     </resource-lifecycle-listeners>
+  </application-engine>
+
+  <persistent-store>
+    <persistent-unit></persistent-unit>
+  </persistent-store>
+  
+  <properties>
+    <property name="applications-home">C:\dev\product\development\nandhi\application</property>
+  </properties>
+  
+</application>

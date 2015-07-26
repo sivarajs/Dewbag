@@ -1,0 +1,21 @@
+<div xmlns:c="nandhi.app.ui.component">
+  
+  	<h1>Business Partners</h1>
+
+	 <c:entityTable entity="BusinessPartner">
+	    <c:columns>
+	       <c:column label="Name" value="#{businessPartner.name}"/>
+	    </c:columns>
+	  </c:entityTable>  
+	    
+	  <c:tabs visibleOnVar="businessPartner">
+	    <c:tab title="Parner">
+		    <c:entityForm entity="BusinessPartner">
+		      <c:panelGrid columns="1" labelStyle="width:60px">
+		        <c:inputText label="Name" value="#{businessPartner.name}"/>
+		      </c:panelGrid>
+		    </c:entityForm>
+	    </c:tab>  
+	    
+	  </c:tabs>  
+</div>

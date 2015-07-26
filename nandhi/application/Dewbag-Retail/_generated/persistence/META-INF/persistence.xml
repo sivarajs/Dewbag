@@ -1,0 +1,84 @@
+<?xml version='1.0'?>
+<persistence xmlns='http://java.sun.com/xml/ns/persistence' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd' version='2.0'>
+    <persistence-unit  name="retail-domain" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>java:comp/env/jdbc/retailDB</jta-data-source>
+
+        <class>app.core.bo.AppEntity</class>
+        <class>app.core.bo.AppEntitySequence</class>
+        <class>app.core.bo.AppEntityState</class>
+        <class>app.core.bo.AppHierarchicalEntity</class>
+        <class>app.core.bo.AuditableEntity</class>
+        <class>app.core.bo.comm.Email</class>
+        <class>app.core.bo.comm.SMS</class>
+        <class>app.core.bo.diagnosis.AppFeedback</class>
+        <class>app.core.bo.enterprise.Enterprise</class>
+        <class>app.core.bo.enterprise.Organization</class>
+        <class>app.core.bo.HierarchicalEntity</class>
+        <class>app.core.bo.Language</class>
+        <class>app.core.bo.location.Address</class>
+        <class>app.core.bo.location.City</class>
+        <class>app.core.bo.location.CityArea</class>
+        <class>app.core.bo.location.Country</class>
+        <class>app.core.bo.location.State</class>
+        <class>app.core.bo.Property</class>
+        <class>app.core.bo.PropertyGroup</class>
+        <class>app.core.bo.security.NewUser</class>
+        <class>app.core.bo.security.ResourceAccess</class>
+        <class>app.core.bo.security.ResourcePermission</class>
+        <class>app.core.bo.security.Role</class>
+        <class>app.core.bo.security.User</class>
+        <class>app.core.bo.security.UserRole</class>
+        <class>app.core.bo.subscription.Subscription</class>
+        <class>app.core.bo.subscription.SubscriptionSchedule</class>
+        <class>app.finance.bo.Tax</class>
+        <class>app.finance.bo.TaxCategory</class>
+        <class>app.marketing.bo.ComplimentaryItem</class>
+        <class>app.marketing.bo.SalesOffer</class>
+        <class>app.mdm.bo.acc.Bank</class>
+        <class>app.mdm.bo.acc.BankAccount</class>
+        <class>app.mdm.bo.acc.BankName</class>
+        <class>app.mdm.bo.bp.BusinessPartner</class>
+        <class>app.mdm.bo.bp.BusinessPartnerLead</class>
+        <class>app.mdm.bo.bp.Customer</class>
+        <class>app.mdm.bo.bp.CustomerAddress</class>
+        <class>app.mdm.bo.bp.CustomerGroup</class>
+        <class>app.mdm.bo.bp.CustomerLoyalty</class>
+        <class>app.mdm.bo.bp.PaymentMode</class>
+        <class>app.mdm.bo.bp.PaymentPeriod</class>
+        <class>app.mdm.bo.bp.PaymentSchedule</class>
+        <class>app.mdm.bo.catalog.Product</class>
+        <class>app.mdm.bo.catalog.ProductCategory</class>
+        <class>app.mdm.bo.catalog.ProductCategoryFeature</class>
+        <class>app.mdm.bo.catalog.ProductFeature</class>
+        <class>app.mdm.bo.catalog.ProductLang</class>
+        <class>app.mdm.bo.catalog.ProductLineItem</class>
+        <class>app.mdm.bo.catalog.ProductSuggestion</class>
+        <class>app.mdm.bo.manufacturer.Brand</class>
+        <class>app.mdm.bo.manufacturer.Manufacturer</class>
+        <class>app.sales.bo.DeliveryCutOffTime</class>
+        <class>app.sales.bo.DeliverySlot</class>
+        <class>app.sales.bo.OfflineSalesOrder</class>
+        <class>app.sales.bo.SalesInvoice</class>
+        <class>app.sales.bo.SalesOrder</class>
+        <class>app.sales.bo.SalesOrderComplimentaryItem</class>
+        <class>app.sales.bo.SalesOrderLineItem</class>
+        <class>retail.shop.bo.cart.ShoppingCart</class>
+        <class>retail.shop.bo.cart.ShoppingCartLineItem</class>
+        <class>retail.shop.bo.CustomerSubscription</class>
+        <class>retail.shop.bo.CustomerTemplate</class>
+        <class>retail.shop.bo.CustomerTemplateLineItem</class>
+        <class>retail.shop.bo.ShoppingStore</class>
+        <class>dewbag.lifestyle.recipe.bo.Recipe</class>
+        <class>dewbag.lifestyle.recipe.bo.RecipeIngredient</class>
+        <class>dewbag.lifestyle.recipe.bo.RecipeInstruction</class>
+        <shared-cache-mode>NONE</shared-cache-mode>
+
+        <properties>
+            <property name="resource-class-registry" value="dewbag.retail.DewbagResourceClassRegistry"/>
+            <property name="jpa-provider-class" value="org.hibernate.ejb.HibernatePersistence"/>
+            <property name="datasource-jndi" value="jdbc/retailDB"/>
+            <property name="persistent-unit" value="retail-domain"/>
+        </properties>
+    </persistence-unit>
+</persistence>

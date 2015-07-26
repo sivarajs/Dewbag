@@ -1,0 +1,141 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+  
+	<description>E-Commerce</description>
+	<display-name>E-Commerce</display-name>
+
+	<servlet>
+		<description>XHTML Handler</description>
+		<servlet-name>XHtmlRenderer</servlet-name>
+		<servlet-class>nandhi.app.binding.http.servlet.XHtmlServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>Business Objects Servlet</description>
+		<servlet-name>BusinessObjectsServlet</servlet-name>
+		<servlet-class>nandhi.app.binding.http.servlet.BusinessObjectServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+    <servlet>
+		<description>Shop Servlet</description>
+		<servlet-name>ShopServlet</servlet-name>
+		<servlet-class>dewbag.retail.shop.servlet.ShopServlet</servlet-class>
+		<init-param>
+            <param-name>context-root</param-name>
+            <param-value>/shop</param-value>
+        </init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<description>Category Servlet</description>
+		<servlet-name>CategoryServlet</servlet-name>
+		<servlet-class>dewbag.retail.shop.servlet.CategoryServlet</servlet-class>
+		<init-param>
+            <param-name>context-root</param-name>
+            <param-value>/shop</param-value>
+        </init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>Product Servlet</description>
+		<servlet-name>ProductServlet</servlet-name>
+		<servlet-class>dewbag.retail.shop.servlet.ProductServlet</servlet-class>
+		<init-param>
+            <param-name>context-root</param-name>
+            <param-value>/shop</param-value>
+        </init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<description>Account Servlet</description>
+		<servlet-name>AccountServlet</servlet-name>
+		<servlet-class>nandhi.app.binding.http.servlet.AccountServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<description>Payment Servlet</description>
+		<servlet-name>PaymentServlet</servlet-name>
+		<servlet-class>dewbag.retail.shop.servlet.PaymentServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<description>LifeStyle Servlet</description>
+		<servlet-name>LifeStyleServlet</servlet-name>
+		<servlet-class>dewbag.retail.shop.servlet.LifeStyleServlet</servlet-class>
+		<init-param>
+            <param-name>context-root</param-name>
+            <param-value>/lifestyle</param-value>
+        </init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+    <servlet-mapping>
+		<servlet-name>AccountServlet</servlet-name>
+		<url-pattern>/account/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>XHtmlRenderer</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BusinessObjectsServlet</servlet-name>
+		<url-pattern>/bo/*</url-pattern>
+	</servlet-mapping>
+
+    <servlet-mapping>
+		<servlet-name>ShopServlet</servlet-name>
+		<url-pattern>/customer/*</url-pattern>
+        <url-pattern>/cart/*</url-pattern>
+        <url-pattern>/order/*</url-pattern>
+        <url-pattern>/organic/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>LifeStyleServlet</servlet-name>
+		<url-pattern>/recipe/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>CategoryServlet</servlet-name>
+		<url-pattern>/category/*</url-pattern>
+		<url-pattern>/organic/category/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProductServlet</servlet-name>
+		<url-pattern>/product/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PaymentServlet</servlet-name>
+		<url-pattern>/payment/*</url-pattern>
+	</servlet-mapping>
+
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/retailDB</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.xhtml</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+      <exception-type>java.lang.Exception</exception-type>
+      <location>/error.xhtml</location>
+    </error-page>
+
+</web-app>	
+	

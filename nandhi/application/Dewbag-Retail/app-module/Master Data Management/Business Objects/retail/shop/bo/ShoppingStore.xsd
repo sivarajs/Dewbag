@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="retail.shop.bo" xmlns="retail.shop.bo" xmlns:r="app.core.bo" xmlns:c="app.mdm.bo.bp">
+
+	<xsd:import schemaLocation="../../../../../../../CoreApp/app-module/Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="ShoppingStore">
+
+		<xsd:sequence>
+		 <xsd:element ref="r:id"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="code" type="xsd:string" />
+			<xsd:element name="description" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,13 @@
+<c:dialog id="shipAddressDlg" xmlns:c="nandhi.app.ui.component" style="width:700px" title="Select Address" >
+  <div style="background-color:#ffffff;padding:10px">
+     <a href="javascript:addCheckoutAddress();">New Address</a>
+   </div>
+  <c:entityTable entity="CustomerAddress" filter="customerId=#{session.user.resourceId}" lifeCycle='none' style="margin-top:0">
+      <c:columns>
+        <c:column value="#{customerAddress.address.address1} #{address.address2}" label="Address1"/>
+        <c:column value="#{customerAddress.address.area.name}" label="Area" width="100"/>
+        <c:column value="#{customerAddress.address.city.name}" label="City" width="100"/>
+        <c:column value="#{customerAddress.address.state.name}" label="State" width="100"/>
+      </c:columns>
+   </c:entityTable> 
+</c:dialog>

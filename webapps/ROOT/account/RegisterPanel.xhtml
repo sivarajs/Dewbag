@@ -1,0 +1,18 @@
+  <c:panelGroup title="Register" style="text-align:center:width:100%" xmlns:c="nandhi.app.ui.component">
+    <c:message id="registerMsg" type="error" class="err"/>
+    <form action="/account/register" method="POST" target="db-reg-frame">
+       <c:inputHidden name="roleId" value="4"/>
+       <c:panelGrid>
+          <c:inputText name="userName" label="Email" id="emailReg"/>
+          <c:inputSecret name="password" label="Password"/>
+          <c:inputSecret name="rpassword" label="Repeat Password"/>
+       </c:panelGrid>
+            
+       <div style="text-align:center">
+         <c:commandButton value="Register"/>
+       </div>  
+    
+    </form>
+    <iframe name="db-reg-frame" width="0" height="0" style="display:none;"/>
+  </c:panelGroup>
+  

@@ -1,0 +1,24 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.mdm.bo.bp" xmlns:r="app.core.bo" xmlns:domain="app.domain.model">
+
+	<xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="BusinessPartnerLead">
+		<xsd:sequence>
+			<xsd:element ref="r:id"/>
+			<xsd:element name="company" type="xsd:string" />
+			<xsd:element name="contactPerson" type="xsd:string" />
+			<xsd:element name="email" type="xsd:string"/>
+			<xsd:element name="mobile" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="landline" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="message">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5000" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

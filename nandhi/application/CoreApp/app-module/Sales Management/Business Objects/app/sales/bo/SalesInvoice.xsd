@@ -1,0 +1,19 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="app.sales.bo" xmlns="app.sales.bo" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/AppEntity.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="SalesOrder.xsd" namespace="app.sales.bo" />
+
+	<xsd:complexType name="SalesInvoice">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+                  <xsd:element name="number" type="xsd:string"/>  
+				  <xsd:element ref="salesOrder"/>
+				  <xsd:element name="notes" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

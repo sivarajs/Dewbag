@@ -1,0 +1,13 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo" xmlns="app.core.bo" xmlns:domain="app.domain.model">
+
+    <xsd:complexType name="AppEntityState">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long" domain:sequence="Identity"/>
+            <xsd:element name="entity" type="xsd:string"/>
+            <xsd:element name="code" type="xsd:int"/>
+            <xsd:element name="status" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="uniqueKey" default="entity,code"/>
+    </xsd:complexType>
+    
+</xsd:schema>

@@ -1,0 +1,14 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo.security" xmlns="app.core.bo.security" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo" />
+
+	<xsd:complexType name="UserRole">
+		<xsd:sequence>
+			<xsd:element ref="r:id" />
+			<xsd:element name="userId" type="xsd:long"/>
+			<xsd:element name="roleId" type="xsd:long"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.location" xmlns="app.core.bo.location" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="Country">
+		<xsd:sequence>
+		    <xsd:element ref="r:id"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="code">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="nameable" />
+	</xsd:complexType>
+
+	<xsd:element name="country" type="Country" />
+</xsd:schema>

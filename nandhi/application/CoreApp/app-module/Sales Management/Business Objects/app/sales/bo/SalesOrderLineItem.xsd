@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.sales.bo" xmlns="app.sales.bo" xmlns:c="app.mdm.bo.catalog" xmlns:r="app.core.bo">
+
+   <xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+   <xsd:import schemaLocation="../../../../../Master Data Management/Business Objects/app/mdm/bo/catalog/ProductLineItem.xsd" namespace="app.mdm.bo.catalog"/>
+   <xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/PropertyGroup.xsd" namespace="app.core.bo"/>
+
+    <xsd:complexType name="SalesOrderLineItem">
+		<xsd:sequence>
+			<xsd:element ref="r:id"/>
+			<xsd:element name="orderId" type="xsd:long" />
+			<xsd:element name="productLineItem" ref="c:productLineItem" />
+			<xsd:element name="totalPrice" type="xsd:float" />
+			<xsd:element name="quantity" type="xsd:int" />
+			<xsd:element name="unitMrp" type="xsd:float"/>
+			<xsd:element name="unitPrice" type="xsd:float"/>
+			<xsd:element name="discount" type="xsd:float" minOccurs="0"/>
+			<xsd:element ref="discountType" minOccurs="0"/>
+			<xsd:element name="taxRate" type="xsd:float" default="0"/>
+			<xsd:element name="notes" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="discountType" type="r:PropertyGroup"/>
+
+</xsd:schema>

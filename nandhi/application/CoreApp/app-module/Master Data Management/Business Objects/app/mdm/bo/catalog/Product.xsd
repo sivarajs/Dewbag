@@ -1,0 +1,30 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.catalog" xmlns="app.mdm.bo.catalog" xmlns:r="app.core.bo">
+
+  <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/AuditableEntity.xsd" namespace="app.core.bo"/>
+  <xsd:include schemaLocation="ProductCategory.xsd" />
+
+  <xsd:complexType name="Product">
+    <xsd:complexContent>
+      <xsd:extension base="r:AuditableEntity">
+        <xsd:sequence>
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="brand" type="xsd:string" minOccurs="0" />
+          <xsd:element ref="productCategory" />
+          <xsd:element name="description" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:maxLength value="10000" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="rating" type="xsd:int" minOccurs="0" />
+          <xsd:element name="isActive" type="xsd:boolean" default="true" />
+          <xsd:element name="tags" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="uniqueKey" default="productCategory,name,brand" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="product" type="Product" />
+</xsd:schema>

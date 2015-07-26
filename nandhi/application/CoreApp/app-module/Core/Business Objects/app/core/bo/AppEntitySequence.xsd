@@ -1,0 +1,13 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo" xmlns="app.core.bo" xmlns:domain="app.domain.model">
+
+    <xsd:complexType name="AppEntitySequence">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" domain:sequence="Identity"/>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="value" type="xsd:long"/>
+        </xsd:sequence>
+        <xsd:attribute name="uniqueKey" default="name"/>
+        <xsd:attribute name="nameable"/>
+    </xsd:complexType>
+    
+</xsd:schema>

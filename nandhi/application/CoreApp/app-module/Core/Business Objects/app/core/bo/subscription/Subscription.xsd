@@ -1,0 +1,18 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.subscription" xmlns="app.core.bo.subscription" xmlns:r="app.core.bo">
+    
+    <xsd:import schemaLocation="../AuditableEntity.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="../PropertyGroup.xsd" namespace="app.core.bo"/>
+    
+	<xsd:complexType name="Subscription" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="r:AuditableEntity">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string"/>
+					<xsd:element ref="state"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+    <xsd:element name="state" type="r:PropertyGroup"/>
+</xsd:schema>

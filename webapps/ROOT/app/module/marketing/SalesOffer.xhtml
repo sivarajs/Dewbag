@@ -1,0 +1,51 @@
+<div xmlns:c="nandhi.app.ui.component">
+     <h1>Sales Offers</h1>
+      <c:entityTable entity="SalesOffer" filter="orderBy=startTime&amp;isDesc=true">
+       <c:columns>
+          <c:column value="#{salesOffer.title}" label="Title" width="200"/>
+          <c:column value="#{salesOffer.startTime}" label="Start Time" width="150"/>
+          <c:column value="#{salesOffer.endTime}" label="End Time" width="150"/>
+          <c:column value="#{salesOffer.productCategory.name}" label="Category" width="250"/>
+          <c:column value="#{salesOffer.minimumPurchase}" label="Minimum Purchase" width="150" />
+          <c:column value="#{salesOffer.discount}" label="Discount" width="100" />      
+          <c:column value="#{salesOffer.discountType.value}" label="Discount Type"/>
+        </c:columns>
+      </c:entityTable>
+      
+      <c:tabs visibleOnVar="salesOffer">
+         <c:tab title="Sales Offer">
+           <c:entityForm entity="SalesOffer" lifeCycle="none">
+                            
+              <c:panelGrid>
+                   <c:inputText label="Title" value="#{salesOffer.title}"/>
+                   <c:inputDate label="Start Time" value="#{salesOffer.startTime}"/>
+                   <c:inputDate label="End Time" value="#{salesOffer.endTime}"/>
+                   <c:inputInt label="Minimum Purchase" value="#{salesOffer.minimumPurchase}"/>
+                   <c:inputInt label="Discount" value="#{salesOffer.discount}"/>
+                   <c:selectOneEntityMenu label="Discount Type" value="#{salesOffer.discountType.value}" entity="PropertyGroup" filter="name=discount-type"/>
+                   <c:inputInt label="Sort Order" value="#{salesOffer.sortOrder}"/>     
+                   <c:selectBooleanCheckBox label="Is Complimentary Items OR?" value="#{salesOffer.isComplimentaryOr}"/>                    
+              </c:panelGrid>
+           </c:entityForm>
+         </c:tab>
+         <c:tab title="Complimentary Items">
+            <c:entityTable entity="ComplimentaryItem"
+                 filter="offerId=#{salesOffer.id}">
+                 <c:columns>
+                    <c:column label="Product" value="#{complimentaryItem.productLineItem.product.brand} #{complimentaryItem.productLineItem.product.name} #{complimentaryItem.productLineItem.quantity} #{complimentaryItem.productLineItem.unitOfMeasure.value}" 
+                     width="400"/>
+                    <c:column label="MRP" value="#{complimentaryItem.mrp}"/>
+                 </c:columns>
+            </c:entityTable>
+            <c:panelGroup visibleOnVar="#{complimentaryItem}">
+              <c:entityForm entity="ComplimentaryItem">
+                 <c:inputHidden value="#{complimentaryItem.offerId}" var="#{salesOffer.id}" />
+                 <c:panelGrid columns="1">                    
+                  <c:inputText label="Complimentary Item" value="#{complimentaryItem.productLineItem.id}"/>
+                </c:panelGrid>  
+              </c:entityForm>
+            </c:panelGroup>
+         </c:tab> 
+       </c:tabs>
+</div>
+

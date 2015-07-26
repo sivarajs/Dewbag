@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.location" xmlns="app.core.bo.location"  xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="City">
+		<xsd:sequence>
+		    <xsd:element ref="r:id"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="countryId" type="xsd:long" />
+			<xsd:element name="stateId" type="xsd:long" />
+		</xsd:sequence>
+		<xsd:attribute name="nameable" />
+	</xsd:complexType>
+	
+	<xsd:element name="city" type="City"/>
+</xsd:schema>

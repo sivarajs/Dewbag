@@ -1,0 +1,55 @@
+<div id="dbHeader" xmlns:c="nandhi.app.ui.component">
+  
+  <div class='top'>
+       <a href="/" class="logo"/>
+       <ul class="subProdLinks">
+         <li class="sel">
+           <a href="/organic">Organic</a>
+         </li>
+         <li>
+            <a href="/recipe">Recipe</a>
+	     </li>
+       </ul>
+       
+       <div class="topRight">
+         <div class="accLinks">
+	         <a href="/">Home</a> |
+	         <c:outputText rendered="#{session.user} != null" value="Welcome #{session.user.name}"/> 
+	         <c:outputText rendered="#{session.user} != null" value=" |"/>
+	         <c:outputLink rendered="#{session.user} != null" value="#{session.user.primaryRole.home}" label="Account"/> 
+	         <c:outputText rendered="#{session.user} != null" value=" |"/>
+	         <c:outputLink rendered="#{session.user} != null" value="/account/logout/" label="Log Out"/> 
+	         
+	         <c:popupLink rendered="#{session.user} == null" id="regPopup" label="Register " href="/account/register/" popupSrc="/common/view/RegisterPopup.xhtml"/>    
+	         <c:outputText rendered="#{session.user} == null" value=" | "/> 
+	         <c:popupLink rendered="#{session.user} == null" id="loginPopup" label="Login " href="/account/login/" popupSrc="/common/view/LoginPopup.xhtml"/>
+	         <!-- <c:googleLogin rendered="#{session.user} == null"/>
+	         <c:fbLogin rendered="#{session.user} == null"/> -->
+	     </div>
+		 <div style="float:right;padding-top:10px">
+	         <span class="cartSummary" style="margin-left:10px;">
+	           <a href="/offers.xhtml">
+	             <span class="coLink">dewbag Offers</span>
+	           </a>
+	         </span>
+	        <c:cartSummary/>
+	     </div>    
+       </div>
+       
+  </div>
+  <div class='bottom'>
+    <div id="shopCat" class="shopCat">
+      <span class="text">Shop By Category</span>
+      <div></div>
+      <c:navEntityTree id="navTree" entity="ProductCategory" filter="isActive=Y&amp;tags=[like]organic&amp;orderBy=sortOrder" href="/organic/category#{qName}" numItems="16"/>                   
+    </div>
+    <div class="search">
+      <form action="/product/search.xhtml" onsubmit="if (search()==false) return false;">
+        <input type="hidden" name="store"/>
+        <input id="searchText" type="text" name="q" class="searchText" required="true" autoSuggest="true" cn="inputText"/> 
+        <input type="submit" value="Search" class="searchBut"/>
+      </form>
+    </div>    
+  </div>    
+  <c:include src="/shop/cart/MiniCart.xhtml"/>
+</div> 

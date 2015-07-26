@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.manufacturer" xmlns="app.mdm.bo.manufacturer" xmlns:r="app.core.bo" xmlns:domain="app.bo.core.domain">
+
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/AppEntity.xsd" namespace="app.core.bo"/>
+    <xsd:include schemaLocation="Brand.xsd"/>
+    
+	<xsd:complexType name="Manufacturer">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string"/>	
+					<xsd:element name="brands" type="Brand" domain:mappedBy="manufacturerId" minOccurs="0" maxOccurs="unbounded"/>				
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="name"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+    <xsd:element name="manufacturer" type="Manufacturer"/>
+    
+</xsd:schema>

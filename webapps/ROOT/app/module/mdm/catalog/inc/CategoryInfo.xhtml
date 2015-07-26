@@ -1,0 +1,46 @@
+<div xmlns:c="nandhi.app.ui.component">
+	<c:entityTable entity="ProductCategory" filter="parentId=#{query.id}&amp;orderBy=sortOrder">
+		<c:columns>
+			<c:column label="Name" value="#{productCategory.name}" width="200" />
+			<c:column label="Qualified Name" value="#{productCategory.qualifiedName}" />
+			<c:column label="Sort Order" value="#{productCategory.sortOrder}" width="100" />
+		</c:columns>
+	</c:entityTable>
+	<c:tabs visibleOnVar="productCategory">
+		<c:tab title="Information">
+			<c:entityForm entity="ProductCategory">
+				<c:inputHidden value="#{productCategory.parentId}" default="#{query.id}" />
+				<c:inputHidden value="#{productCategory.type}" default="category" />
+				<c:inputHidden value="#{productCategory.kind}" default="category" />
+				<c:panelGrid columns="2" labelStyle="width:100px">
+					<c:inputText label="Name" value="#{productCategory.name}" />
+					<c:selectOneEntityMenu label="Tax" value="#{productCategory.tax.name}" entity="Tax"/>
+					<c:inputText label="Sort Order" value="#{productCategory.sortOrder}" />
+					<c:inputText label="Tags" value="#{productCategory.tags}" />
+					<c:inputText label="Description" value="#{productCategory.description}" />
+					<c:selectBooleanCheckBox label="Is Active?"
+						value="#{productCategory.isActive}" />
+				</c:panelGrid>
+			</c:entityForm>
+		</c:tab>
+		<c:tab title="Features">
+			<c:entityTable entity="ProductCategoryFeature" filter="categoryId=#{category.id}">
+				<c:columns>
+					<c:column label="Name" value="#{categoryFeature.name}" width="200" />
+					<c:column label="type" value="#{categoryFeature.type.propertyName}" />
+				</c:columns>
+			</c:entityTable>
+			<c:panelGroup title="Selected Feature" visibleOnVar="categoryFeature">
+			  <c:entityForm entity="ProductCategoryFeature">
+				<c:inputHidden value="#{productCategoryFeature.categoryId}" var="#{category.id}" />
+				<c:panelGrid columns="2" labelStyle="width:70px">
+					<c:inputText label="Name" value="#{productCategoryFeature.name}" />
+					<c:selectOneEntityMenu label="Attribute Type" value="#{productCategoryFeature.type.value}" entity="PropertyGroup" filter="name=attribute-type"/>
+					<c:inputText label="Attributes" value="#{productCategoryFeature.attributes}" />
+					<c:inputInt label="Sort Order" value="#{productCategoryFeature.sortOrder}" />
+				</c:panelGrid>
+			</c:entityForm>
+			</c:panelGroup>
+		</c:tab>
+	</c:tabs>
+</div>

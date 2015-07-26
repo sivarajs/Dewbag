@@ -1,0 +1,45 @@
+<c:template src="/common/template/lifestyle/RecipeHome.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Check Out" />
+
+  <c:parameter name="content">
+    <h1>Recipes</h1>
+    
+    
+    <div style="width:100%">
+	    <c:include src="/lifestyle/recipe/inc/SearchBox.xhtml"/>
+	    
+	    <div style="float:left;margin-left:20px;width:73%">
+	    
+	    <div class="box">
+	       <c:entity name="Recipe" id="#{query.i}">
+	          <h2>#{recipe.name}</h2>
+	       </c:entity>   
+          <c:entity name="RecipeImage" filter="entityId=#{recipe.id}&amp;isThumbnail=Y">
+		      <p align="left"><img src="#{recipeImage.image}" style="float:left;width:150px;margin-right:10px;"/><span>#{recipe.description}</span></p>
+		  </c:entity>
+		  <div class="clr"/>
+		  
+          <h3>Instructions</h3>
+          <ul>
+            <c:entityGrid entity="RecipeInstruction" filter="recipeId=#{recipe.id}">
+              <li>#{recipeInstruction.step}</li>
+            </c:entityGrid>
+          </ul>
+          
+          <h3>Ingredients</h3>
+          <ul>
+            <c:entityGrid entity="RecipeIngredient" filter="recipeId=#{recipe.id}">
+              <li>#{recipeIngredient.ingredient}</li>
+            </c:entityGrid>
+          </ul>
+	      
+	      <h3>Preparation Time : #{recipe.preparationTime} minutes</h3>
+	      <h3>Services for #{recipe.totalServe}</h3>
+	      </div>
+	    </div>
+    </div>
+    
+    <div class="clr"/>
+  </c:parameter>
+</c:template>

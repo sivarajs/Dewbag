@@ -1,0 +1,20 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Fresh and quality products at the best price"/>
+
+  <c:parameter name="content">
+     <div>
+       <h2>Your Shopping Bag</h2>
+       <c:include src="/shop/cart/inc/Cart.xhtml"/>
+       
+       <div class="clr"/>
+       <div style="width:100%;float:right;margin-top:30px;">
+         <c:commandButton onclick="checkout(event)" value="Check Out" style="float:right"/>
+         
+         <c:popupLink rendered="#{session.user} != null" style="float:right;margin:10px 10px 0 0;" label="Save as Template" value="/bo/CustomerTemplate" popupSrc="/shop/cart/inc/CustomerCartPopup.xhtml"/>
+         
+      </div>
+      <div class="clr"/> 
+     </div>  
+  </c:parameter>
+</c:template>

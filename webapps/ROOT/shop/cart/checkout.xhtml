@@ -1,0 +1,144 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component" xmlns:a="nandhi.app.ui.activity" xmlns:b="nandhi.app.ui.block">
+
+  <c:variable name="page.title" value="Check Out" />
+  
+   <c:parameter name="content">
+    <h1>Review Your Order </h1>
+    
+    <div class="left">
+    
+        <c:entity name="Customer" filter="id=#{query.cid}" ignoreIfNotAvailable="true"/>
+        <b:if condition="#{customer.name} == null">
+           <c:entity name="Customer" filter="id=#{session.user.resourceId}" ignoreIfNotAvailable="true"/>
+        </b:if>
+        
+        <a:throw condition="#{customer.name} == null" message="Please update your address to checkout" link="/cart/profile.xhtml"/>
+        <!--  <h:panelGroup title="Order Summary" xmlns:h="nandhi.app.ui.component">
+  
+		  <table>
+		    <tr>
+		      <td>Total Items</td>
+		      <td> :</td>
+		      <td style="padding-left:4px;"><h:outputText value="#{shoppingBag.itemCount}"/></td>
+		    </tr>
+		    <tr>
+		      <td>Sub Total</td>
+		      <td> : </td>
+		      <td style="padding-left:4px;"> Rs <h:outputText value="#{shoppingBag.subTotal}"/> </td>
+		    </tr>
+		    <tr>
+		      <td>Savings</td>
+		      <td> : </td>
+		      <td style="padding-left:4px;"> Rs <h:outputText  class="impMsg" value="#{shoppingBag.savings}"/> </td>
+		    </tr> 
+		  </table>
+		  
+		</h:panelGroup> -->
+        
+        <c:panelGroup title="Shipping Address">
+          <div id="coAddressPanel">
+    	      <span id="custAddrId" style="display:none">#{customer.address.id}</span>   
+		      <div id="coAddress">   
+		        <p>
+		          <c:outputText value="#{customer.address.address1}"/>
+		        </p>
+		        <p>
+		          <c:outputText value="#{customer.address.address2}"/>
+		        </p>
+		        <p>
+		          <c:outputText value="#{customer.address.landmark}"/>
+		        </p>
+		        <p>
+		          <c:outputText value="#{customer.address.city}"/>
+		        </p>
+		        <p>
+		          <c:outputText value="#{customer.address.state}"/>
+		        </p>
+		        <p>
+		          <c:outputText value="#{customer.address.country}"/>
+		        </p>
+		        <p>
+		          <c:outputText value="#{customer.address.pin}"/>
+		        </p>
+		      </div>
+          </div> 
+            <div style="text-align:right">
+              <a href="javascript:changeCheckoutAddress();">Change</a>
+            </div>
+        </c:panelGroup>
+        <c:panelGroup title="Communication" style="margin-top:10px">
+		      <c:outputText value="#{customer.mobile}" style="clear:both"/>
+		      <div>
+		      <c:outputText rendered="customer.altMobile != null" value="#{customer.altMobile}"/>
+		      </div>
+		      <c:outputText value="#{customer.email}"/>
+		</c:panelGroup>
+ 
+        <c:panelGroup
+          title="Delivery Slot" style="margin-top:10px">
+          <div id="delSlotInfo">
+            -- No Preference --
+          </div>
+        </c:panelGroup>
+      </div>
+    
+      <div class="right">
+        <c:include src="/shop/cart/inc/CheckoutCart.xhtml"/>
+        <c:salesOfferSummary/>
+    
+	    <c:entityForm id="poForm" entity="SalesOrder" lifeCycle="none" submittable="false" successStatus="false">
+	      <c:inputHidden value="#{salesOrder.customer.id}" default="#{query.cid}" />
+	      <c:inputHidden value="#{salesOrder.deliveryAddress.id}"
+	        id="poDelAddr" />
+	      <c:inputHidden value="#{salesOrder.deliveryDate}" id="delDate" />
+	      <c:inputHidden value="#{salesOrder.deliverySlot.id}" id="delSlotId" />
+	      
+	      
+	      <h2>Notes</h2>
+	      <p>You can also specify the items that you want to include in the order.</p>  
+	      <c:inputTextarea value="#{salesOrder.flexiItems}" style="width:100%;height:150px"/>
+	      
+          <h2>Preferred Delivery Slot</h2>
+          <p style="font-size:95%">Click on the desired box to select the delivery slot</p>
+          <c:timeSlot onSlotSelect="onSlotSelect(date,slotId,slot)" /> 
+          <script
+            type="text/javascript">
+          
+                  function onSlotSelect(date,slotId,slot) {
+                      $('#delDate').val(date);
+                      $('#delSlotId').val(slotId);
+                      $('#delSlotInfo').html(date+" "+slot);
+                      
+                  }
+            
+          </script> 
+
+
+          <h2>Payment Mode</h2>
+          <div style="margin-top:10px">
+            <input type="radio" name="salesOrder.payMode.id" id="payCash" checked="checked" value="51"/>
+            <span style="margin-left:5px" id="payCashDesc">Cash / Swipe Card On Delivery / Sodexo / Ticket Restaurant</span>
+          </div>
+          <div style="margin-top:10px">
+            <input type="radio" name="salesOrder.payMode.id" value="52"/>
+            <span style="margin-left:5px" id="payCCDesc">Online Payment</span>
+          </div>
+      
+          <div style="width:100%;float:right">
+            <div class="dbButton" style="float: right">
+               <c:commandButton value="Proceed To Check Out" onclick="if (confirmCheckout() == false) return false;"/>
+            </div>
+            <div style="float:right;margin:10px 10px 0">
+               <a href='/'>Continue Shopping</a>
+            </div>
+            <div class="clr"/>
+          </div>
+         
+      </c:entityForm>
+    </div>    
+    <div class="clr"/>
+    
+    <c:include src="/shop/cart/inc/Payment.xhtml"/>
+    <c:include src="/shop/cart/inc/CheckoutConfirm.xhtml"/>    
+  </c:parameter>
+</c:template>

@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo.security" xmlns="app.core.bo.security" xmlns:r="app.core.bo" xmlns:domain="app.bo.core.domain">
+
+	<xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo" />
+	<xsd:include schemaLocation="Role.xsd" />
+
+	<xsd:complexType name="NewUser">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long" domain:sequence="Identity"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="password" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="accessToken" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="primaryRole"/>
+			<xsd:element name="state" type="xsd:string"/>
+			<xsd:element name="createdOn" type="xsd:dateTime"/>
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="name"/>
+	</xsd:complexType>
+	
+	 
+	 <xsd:element name="primaryRole" type="Role"/>
+
+</xsd:schema>

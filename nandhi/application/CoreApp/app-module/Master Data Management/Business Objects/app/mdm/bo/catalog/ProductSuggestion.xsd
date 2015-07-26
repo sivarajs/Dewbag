@@ -1,0 +1,22 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.catalog" xmlns="app.mdm.bo.catalog" xmlns:c='retail.bo.buyer' xmlns:r="app.core.bo" xmlns:p="app.mdm.bo.bp">
+
+	<xsd:import schemaLocation="../bp/Customer.xsd" namespace="app.mdm.bo.bp"/>
+  <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="ProductSuggestion">
+		
+		<xsd:sequence>				  
+			<xsd:element ref="r:id"/>
+	        <xsd:element ref="p:customer" minOccurs="0"/>
+	        <xsd:element name="email" type="xsd:string" minOccurs="0"/> 
+	        <xsd:element name="suggestion">
+	          <xsd:simpleType>
+	             <xsd:restriction base="xsd:string">
+	              <xsd:maxLength value="1000" />
+	             </xsd:restriction>
+	          </xsd:simpleType>
+	        </xsd:element>   
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

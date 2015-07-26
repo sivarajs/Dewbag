@@ -1,0 +1,15 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.sales.bo" xmlns="app.sales.bo" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/PropertyGroup.xsd" namespace="app.core.bo"/>
+
+	<xsd:complexType name="DeliveryCutOffTime">
+		<xsd:sequence>
+			<xsd:element ref="r:id" />
+			<xsd:element name="time" type="xsd:int" />
+			<xsd:element name="amPm" type="r:PropertyGroup" />
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="time, amPm" />
+	</xsd:complexType>
+
+</xsd:schema>

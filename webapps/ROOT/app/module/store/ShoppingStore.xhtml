@@ -1,0 +1,21 @@
+<div xmlns:c="nandhi.app.ui.component">
+     <h1>Sales Orders</h1>
+      <c:entityTable entity="ShoppingStore">
+       <c:columns>
+          <c:column value="#{shoppingStore.name}" label="Name" width="200"/>
+          <c:column value="#{shoppingStore.code}" label="Code" width="200"/>
+        </c:columns>
+      </c:entityTable>
+      
+      <c:panelGroup visibleOnVar="shoppingStore">
+	    <c:entityForm entity="ShoppingStore">
+	      <c:panelGrid>
+	        <c:inputText value="#{shoppingStore.name}" label="Name" />
+	        <c:inputText value="#{shoppingStore.code}" label="Code" />
+	        <c:inputTextarea label="Description" type="rich" value="#{shoppingStore.description}" />	
+	      </c:panelGrid>
+	    </c:entityForm>
+	  </c:panelGroup>
+      
+</div>
+

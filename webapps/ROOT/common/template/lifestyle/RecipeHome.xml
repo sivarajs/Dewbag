@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xmlns:c="nandhi.app.ui.component">
+
+  <c:include src="/common/HtmlHead.xhtml"/>
+  
+  <body class="db">
+    <div id="dbPage">
+      <c:include src="/common/template/lifestyle/RecipeHeader.xhtml"/>
+      
+       <div id="dbContent" style="float:left">
+          <div class="leftPane">
+            <c:parameter name="content"/>
+          </div>  
+          <div class="rightPane">
+            <c:include src="/common/view/RightSidePhoneBar.xhtml"/>
+          </div>   
+        </div>
+        <div class="clr"></div>
+        <c:include src="/common/Footer.xhtml"/>
+        <c:include src="/common/view/Feedback.xhtml"/>
+     </div>
+  </body>
+   
+</html>

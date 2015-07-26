@@ -1,0 +1,17 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="retail.shop.bo.cart" xmlns="retail.shop.bo.cart" xmlns:r="app.core.bo" xmlns:c="app.mdm.bo.bp">
+
+	<xsd:import schemaLocation="../../../../../../../../CoreApp/app-module/Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../../../../CoreApp/app-module/Master Data Management/Business Objects/app/mdm/bo/bp/Customer.xsd" namespace="app.mdm.bo.bp" />
+
+	<xsd:complexType name="ShoppingCart">
+
+		<xsd:sequence>
+		 <xsd:element ref="r:id"/>
+			<xsd:element ref="c:customer" minOccurs="0" />
+			<xsd:element name="sessionId" type="xsd:string" />
+			<xsd:element name="createdOn" type="xsd:dateTime" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

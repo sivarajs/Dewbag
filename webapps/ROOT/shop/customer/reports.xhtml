@@ -1,0 +1,48 @@
+<c:template src="/common/template/Customer.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="head">
+    <script src="/fw/js/thirdparty/jscharts/sources/jscharts.js" type="text/javascript"></script>
+  </c:parameter>
+  <c:parameter name="content">
+
+    <div>
+      <h1>Reports</h1>
+
+      <c:tabs>
+        <c:tab title="Order-wise Report">
+          
+          <c:entityTable id="poTable" entity="SalesOrder" filter="customer.id=#{session.user.resourceId}" lifeCycle="none" >
+            <c:columns>
+              <c:column value="#{salesOrder.orderId}" label="Order No." width="150" href="/order/?orderId=#{purchaseOrder.id}"/>
+              <c:column value="#{salesOrder.placedOn}" label="Date" width="150" />
+              <c:column attr="#{salesOrder.state.status}" label="Status" />
+            </c:columns>
+          </c:entityTable>
+          <div id="oGraph" style="margin-top:10px;"></div>
+        </c:tab>
+        <c:tab title="Date Range Report">
+        
+          <c:panelGrid>
+            <c:inputDate id='rsDate' label="Start Date" onclick="$('#dGraph').hide();"/>
+            <c:inputDate id='reDate' label="End Date" onclick="$('#dGraph').hide();"/>
+          </c:panelGrid>
+          <c:commandButton  style="margin-left:270px;" value="Get" onclick='generateDateRangeReport()'/>
+          <div id="dGraph" style="margin-top:10px;"></div>          
+        </c:tab>
+      </c:tabs>
+
+      
+          <script type="text/javascript">
+          window.onDocReady(function() {
+                
+             registerChart();
+            });
+            
+            
+       </script>
+
+    </div>
+
+  </c:parameter>
+
+</c:template>

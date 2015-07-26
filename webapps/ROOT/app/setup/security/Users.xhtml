@@ -1,0 +1,24 @@
+<div xmlns:c="nandhi.app.ui.component">
+  <h1>Users</h1>
+  <c:entityTable entity="User" lifeCycle="none">
+    <c:columns>
+      <c:column label="Name" value="#{user.name}" width="200" sortable="true" />
+      <c:column label="Email" value="#{user.email}" width="200" sortable="true" />
+      <c:column label="Mobile" value="#{user.mobile}" width="200" sortable="true" />
+      <c:column label="Home" value="#{user.primaryRole.name}" width="200" sortable="true" />
+      <c:column label="State" value="#{user.state}" sortable="true" />
+    </c:columns>
+  </c:entityTable>
+
+  <c:panelGroup visibleOnVar="user">
+    <c:entityForm entity="User" lifeCycle="none">
+      <c:panelGrid>
+        <c:inputText value="#{user.name}" label="Name" />
+        <c:inputText value="#{user.email}" label="Email" />
+        <c:inputText value="#{user.mobile}" label="Mobile" />
+        <c:inputText value="#{user.primaryRole.name}" label="Role" />
+      </c:panelGrid>
+    </c:entityForm>
+  </c:panelGroup>
+
+</div>

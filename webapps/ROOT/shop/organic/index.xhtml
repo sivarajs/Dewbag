@@ -1,0 +1,43 @@
+<c:template src="/common/template/store/StoreHome.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Fresh and Quality Products @ Best Price"/>
+  
+  <c:parameter name="content">
+  
+       <div class="carousel-wrapper">
+	       <div id="carousel" data-jcarousel="true" data-wrap="circular" class="carousel">
+		       <ul>
+		         <li style="width:220px;height:200px"><img src="/imgs/home/1.jpg" width="220" height="198"/></li>
+		         <li style="width:264px;height:200px"><img src="/imgs/home/2.jpg" width="264" height="198"/></li>
+		         <li style="width:298px;height:200px"><img src="/imgs/home/3.jpg" width="200" height="198"/></li>
+		         <li style="width:292px;height:200px"><img src="/imgs/home/4.jpg" width="250" height="198"/></li>
+		         <li style="width:277px;height:200px"><img src="/imgs/home/5.jpg" width="242" height="198"/></li>
+		       </ul>  
+	       </div>
+	       <a data-jcarousel-control="true" data-target="-=1" href="#" class="carousel-control-prev"></a>
+	       <a data-jcarousel-control="true" data-target="+=1" href="#" class="carousel-control-next"></a>
+	   </div>
+	    
+       <script type="text/javascript">
+
+        (function() {
+        	$('[data-jcarousel]').each(function() {
+                var el = $(this);
+                el.jcarousel(el.data());
+            });
+
+            $('[data-jcarousel-control]').each(function() {
+                var el = $(this);
+                el.jcarouselControl(el.data());
+            }); */
+            
+        	initProductThumbnailPage();
+        })();
+      
+       </script>
+       
+      <div style="margin-top:80px;">
+       
+      </div>  
+   </c:parameter>
+ </c:template>    

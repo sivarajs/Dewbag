@@ -1,0 +1,14 @@
+<div style="width:25%;float:left" xmlns:c="nandhi.app.ui.component">
+	       <c:panelGroup title="Recipe Search">
+	         <form action="/lifestyle/recipe/search.xhtml">
+	           <c:panelGrid labelStyle="width:20px">
+	             <c:inputText label="Name" name="name" width="150" style="width:150px;min-width:150px"/>
+	             <c:selectOneEntityMenu label="Meal Type" name="mt" value="#{recipe.mealType.value}" entity="PropertyGroup" filter="name=meal-type"/>
+	             <c:selectOneEntityMenu label="Diet" name="md" value="#{recipe.mealDiet.value}" entity="PropertyGroup" filter="name=meal-diet"/>
+	           </c:panelGrid>
+	           <div style="text-align:right">
+	             <c:commandButton value="Search"/>
+	           </div>  
+	         </form>
+	       </c:panelGroup>
+	    </div>

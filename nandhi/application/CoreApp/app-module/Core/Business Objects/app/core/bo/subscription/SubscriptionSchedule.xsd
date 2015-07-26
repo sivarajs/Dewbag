@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.subscription" xmlns="app.core.bo.subscription" xmlns:r="app.core.bo">
+    
+    <xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="../PropertyGroup.xsd" namespace="app.core.bo"/>
+    
+	<xsd:complexType name="SubscriptionSchedule" abstract="true">
+		<xsd:sequence>
+		    <xsd:element ref="r:id"/>
+			<xsd:element name="subscriptionId" type="xsd:long"/>
+			<xsd:element ref="subscriptionPeriod"/>
+			<!--  Used to capture which day of week, month, etc. -->
+			<xsd:element name="subscriptionPerioData" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="startingFrom" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="endingOn" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+ 
+    <xsd:element name="subscriptionPeriod" type="r:PropertyGroup"/>
+    <xsd:element name="subscriptionSchedule" type="SubscriptionSchedule"/>
+ 
+</xsd:schema>

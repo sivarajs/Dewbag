@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>nandhi</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>thirdparty</name>
+			<type>2</type>
+			<location>C:/dev/product/thirdparty</location>
+		</link>
+		<link>
+			<name>webapp-app</name>
+			<type>2</type>
+			<location>C:/application/apache-tomcat-7.0.34/webapps/ROOT</location>
+		</link>
+		<link>
+			<name>webapp-designer</name>
+			<type>2</type>
+			<location>C:/application/apache-tomcat-7.0.34/webapps/designer</location>
+		</link>
+		<link>
+			<name>webapp-fw</name>
+			<type>2</type>
+			<location>C:/application/apache-tomcat-7.0.34/webapps/fw</location>
+		</link>
+	</linkedResources>
+</projectDescription>

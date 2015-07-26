@@ -1,0 +1,22 @@
+  <c:panelGroup title="Login" style="text-align:center" xmlns:c="nandhi.app.ui.component">
+    <c:message id="loginMsg" type="error" class="err"/>
+    <form action="/account/login" method="POST" target="db-login-frame">
+     
+       <c:panelGrid>
+          <c:inputText name="userName" label="Email" id="emailLog"/>
+          <c:inputSecret name="password" label="Password"/>
+          
+       </c:panelGrid>
+       <div style="text-align:center">
+         <c:commandButton value="Login"/>
+       </div>         
+    
+    </form>
+    <div class="separator"/>
+    
+    <div style="float:left"><a href="javascript:;" class="forgotPass" style="margin-left:10px"> Forgot Password?</a></div>
+    <div style="float:right">Login in with <c:googleLogin/> <c:fbLogin/></div>
+    <div class="clr"/>  
+    <iframe name="db-login-frame" width="0" height="0" style="display:none;"/>  
+  </c:panelGroup>
+  

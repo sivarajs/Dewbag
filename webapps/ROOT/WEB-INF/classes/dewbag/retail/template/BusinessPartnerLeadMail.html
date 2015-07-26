@@ -1,0 +1,35 @@
+<html>
+<body>
+  <p><em>Dear #{businessPartnerLead.company},</em></p> 
+  <p>Thank you for contacting dewbag.com. We will get back to you as soon as possible</p> 
+  <p>If you have any queries, you can either call us on 080-26780209 or email to <a href="mailto:partner@dewbag.com">partner@dewbag.com</a></p> 
+  <br/>
+  <table>
+     <tr>
+       <td>Contact Person</td>
+       <td>&nbsp;:&nbsp;</td>
+       <td>#{businessPartnerLead.contactPerson}</td>
+     <tr>
+     <tr>
+       <td>Email</td>
+       <td>&nbsp;:&nbsp;</td>
+       <td>#{businessPartnerLead.email}</td>
+     <tr>
+     <tr>
+       <td>Mobile</td>
+       <td>&nbsp;:&nbsp;</td>
+       <td>#{businessPartnerLead.mobile}</td>
+     <tr>
+     <tr>
+       <td>Landline</td>
+       <td>&nbsp;:&nbsp;</td>
+       <td>#{businessPartnerLead.landline}</td>
+     <tr>
+  </table>
+  <br/>
+  <div>#{businessPartnerLead.message}</div>
+  <br/>
+  <p>Warm Regards</p>
+  <p>dewbag.com</p>
+  </body>
+</html>

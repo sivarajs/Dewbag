@@ -1,0 +1,18 @@
+
+<c:dialog id="mobileConfDialog" title="Confirmation Code" xmlns:c="nandhi.app.ui.component">
+
+  <p>To complete the registration, please enter the confirmation code that we sent to your mobile number</p>
+
+  <c:message id="mobileRegMsg" type="error"/>
+
+  <form action="/account/mobileconfirm" method="POST" target="confirm-mobile-frame">
+     <c:inputHidden name="userName" value="#{query.m}"/>   
+     <c:panelGrid>
+        <c:inputText name="code" label="Confirmation Code" disabled="true"/>   
+     </c:panelGrid>
+     
+     <c:commandButton value="Submit" style="margin:left:75px"/>
+  
+  </form>
+  <iframe name="confirm-mobile-frame" width="0" height="0" style="display:none;"/>
+</c:dialog>

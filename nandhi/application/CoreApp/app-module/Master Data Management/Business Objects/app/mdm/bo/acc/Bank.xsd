@@ -1,0 +1,23 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.acc" xmlns="app.mdm.bo.acc" xmlns:b="app.core.bo" xmlns:l="app.core.bo.location">
+    
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/location/Address.xsd" namespace="app.core.bo.location"/>
+    <xsd:include schemaLocation="BankName.xsd"/>
+    
+	<xsd:complexType name="Bank">
+		
+		<xsd:sequence>
+		    <xsd:element ref="b:id"/>
+		    <xsd:element ref="name"/>
+		    <xsd:element name="code" type="xsd:string"/>
+		    <xsd:element name="address" type="l:Address"/>
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="name"/>
+		
+	</xsd:complexType>
+	
+	<xsd:element name="name" type="BankName"/>
+	<xsd:element name="bank" type="Bank"/>
+	
+
+</xsd:schema>

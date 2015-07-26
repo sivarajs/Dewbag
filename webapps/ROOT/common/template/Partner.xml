@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="nandhi.app.ui.component" >
+
+  <head>
+	  <title>#{pageTitle}</title>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  <meta http-equiv="Pragma" content="no-cache" />
+	  <meta http-equiv="Cache-Control"
+	   content="no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0" />
+	  <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+	  <link href="/common/css/app.css" type="text/css" rel="stylesheet" />
+      <script src="/common/js/app.js" type="text/javascript" />
+  </head>
+  
+  <body>
+      <div id="header">
+	      <div class="appMenu">
+	        <c:entityMenu entity="HierarchicalEntity" filter="type=partner-setup-menu" label="Application Setup" labelClass="menuLabel"/>
+	        |
+	        <c:entityMenu entity="HierarchicalEntity" filter="type=partner-module-menu" label="Modules"  labelClass="menuLabel"/>
+	      </div>
+	  </div>    
+	  <div id="content">
+	    
+	  </div>
+  </body>
+</html>

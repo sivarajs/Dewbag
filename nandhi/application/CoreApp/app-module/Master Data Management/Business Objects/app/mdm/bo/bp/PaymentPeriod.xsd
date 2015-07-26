@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.mdm.bo.bp" xmlns="app.mdm.bo.bp" xmlns:domain="app.bo.core.domain">
+
+	<xsd:complexType name="PaymentPeriod">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long" domain:sequence="Identity"/>
+			<xsd:element name="period" type="xsd:string" />
+			<xsd:element name="inDays" type="xsd:int" />
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="period" />
+		<xsd:attribute name="uniqueKey" default="inDays" />
+	</xsd:complexType>
+
+    <xsd:element name="paymentPeriod" type="PaymentPeriod"/>
+
+</xsd:schema>

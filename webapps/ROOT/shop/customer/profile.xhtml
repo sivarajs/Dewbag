@@ -1,0 +1,35 @@
+<c:template src="/common/template/Customer.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="content">
+    
+          <h1>Personal Profile</h1>
+        
+          <c:outputText rendered="#{query.checkout} != null" style="margin:10px 0;color:red" value="Please update your profile before checking out"/>
+        
+          <c:entityForm entity="Customer" entityId="#{session.user.resourceId}" lifeCycle="none">
+            <c:inputHidden value="#{customer.group.id}"/>
+            <c:inputHidden value="#{customer.address.id}"/>
+            <c:panelGrid>
+              <c:panelGridSection title="Personal Information">  
+                <c:inputText label="Name" value="#{customer.name}" required="true"/>
+                <c:inputText label="Email" value="#{customer.email}" regExp="[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required="true"/>
+                <c:inputText label="Mobile" value="#{customer.mobile}" required="true" valLen="10" regExp="^[0-9]+$"/>
+                <c:inputText label="Alternate Mobile" value="#{customer.altMobile}" valLen="10" regExp="^[0-9]+$"/>
+                <c:inputText label="Landline" value="#{customer.landline}" length="8" regExp="^[0-9]+$"/>
+              </c:panelGridSection>
+              <c:panelGridSection title="Primary Address">                
+                <c:inputText label="Address1" value="#{customer.address.address1}" />
+                <c:inputText label="Address2" value="#{customer.address.address2}"/>
+                <c:inputText label="Landmark" value="#{customer.address.landmark}"/>
+                <c:selectOneEntityMenu value="#{customer.address.area.name}" label="Area" entity="CityArea" filter="cityId=1&amp;orderBy=name"/>
+                <c:selectOneEntityMenu value="#{customer.address.city.name}" label="City" entity="City" filter="countryId=1&amp;stateId=18"/>
+                <c:selectOneEntityMenu value="#{customer.address.state.name}" label="State" entity="State" filter="countryId=1"/>
+                <c:selectOneEntityMenu value="#{customer.address.country.name}" label="Country" entity="Country"/>
+                <c:inputText label="Pin" value="#{customer.address.pin}" valLen="6" regExp="^[0-9]+$"/>
+              </c:panelGridSection>
+              
+            </c:panelGrid>
+            
+          </c:entityForm>
+  </c:parameter>
+</c:template>

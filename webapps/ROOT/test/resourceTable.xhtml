@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <link href="/fw/theme/basic/css/fw.css" type="text/css" rel="stylesheet" />
+  <script src="/common/js/app.js" type="text/javascript" />
+</head>
+
+<body>
+<div xmlns:c="nandhi.app.ui.component" xmlns:b="nandhi.app.ui.block">
+  <c:entityTable entity="Property">
+    <c:columns>
+       <c:column label="Name" value="#{property.name}" width="200"/>
+       <c:column label="Value" value="#{property.value}" />
+    </c:columns>
+  </c:entityTable>  
+  
+  <c:panelGroup>
+  
+    <c:entityForm entity="Property">
+    
+      <c:panelGrid columns="1" labelStyle="width:70px">
+      
+        <c:inputText label="Name" value="#{property.name}" default="Test1"/>
+        
+        <c:inputText label="Value" value="#{property.value}"/>
+      
+      </c:panelGrid>
+    
+    </c:entityForm>
+  
+  
+  </c:panelGroup>
+  
+</div>
+</body>
+</html>

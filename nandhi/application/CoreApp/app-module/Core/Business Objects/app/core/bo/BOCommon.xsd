@@ -1,0 +1,5 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo" xmlns:domain="app.bo.core.domain">
+
+   <xsd:element name="id" type="xsd:long" domain:sequence="Identity"/>
+   <xsd:element name="intId" type="xsd:int" domain:sequence="Identity"/>
+</xsd:schema>

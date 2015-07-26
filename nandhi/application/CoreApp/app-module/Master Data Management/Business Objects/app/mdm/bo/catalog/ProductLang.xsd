@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.catalog" xmlns="app.mdm.bo.catalog" xmlns:r="app.core.bo">
+
+  <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+  <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/Language.xsd" namespace="app.core.bo"/>
+
+  <xsd:complexType name="ProductLang">
+        <xsd:sequence>
+          <xsd:element ref="r:id" />
+          <xsd:element name="productId" type="xsd:long"/>
+          <xsd:element ref="r:language"/>
+          <xsd:element name="name" type="xsd:string"/>
+          <xsd:element name="englishWriting" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="uniqueKey" default="productId,language" />
+  </xsd:complexType>
+</xsd:schema>

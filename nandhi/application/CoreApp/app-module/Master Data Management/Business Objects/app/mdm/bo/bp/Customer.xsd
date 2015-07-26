@@ -1,0 +1,28 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.bp" xmlns="app.mdm.bo.bp" xmlns:r="app.core.bo" xmlns:l="app.core.bo.location">
+
+	<xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/AuditableEntity.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/location/Address.xsd" namespace="app.core.bo.location"/>
+	<xsd:include schemaLocation="CustomerGroup.xsd"/>
+
+	<xsd:complexType name="Customer">
+		<xsd:complexContent>
+			<xsd:extension base="r:AuditableEntity">
+				<xsd:sequence>
+				    <xsd:element ref="group"/>
+				    <xsd:element name="name" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="email" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="mobile" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="altMobile" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="landline" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="address" type="l:Address" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="email,mobile"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+  <xsd:element name="group" type="CustomerGroup"/>
+  <xsd:element name="customer" type="Customer"/>
+  
+</xsd:schema>

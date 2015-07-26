@@ -1,0 +1,19 @@
+<c:popup xmlns:c="nandhi.app.ui.component" title="Register" style="width:450px;">
+    <c:message id="registerMsg" type="error"/>
+    <form action="/account/register" method="POST" onsubmit="ui.ajaxLoader.showInNode('regAjaxLoader');" target="db-reg-frame">
+       <c:inputHidden name="roleId" value="4"/>
+       <c:panelGrid>
+          <c:inputText name="userName" label="Email"/>
+          <c:inputSecret name="password" label="Password"/>
+          <c:inputSecret name="rpassword" label="Repeat Password"/>
+       </c:panelGrid>
+       <c:commandButton value="Register"/>       
+    </form>
+    <div class="separator"/>
+    <div style="text-align:center">
+       <div style="float:left" id="regAjaxLoader"/>
+       <a href="javascript:;" class="regUser">Already Registered?</a>
+    </div>
+    <div class="separator"/>
+  <iframe name="db-reg-frame" width="0" height="0" style="display:none;"/>
+</c:popup>

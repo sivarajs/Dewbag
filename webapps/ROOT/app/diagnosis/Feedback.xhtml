@@ -1,0 +1,20 @@
+<div xmlns:c="nandhi.app.ui.component">
+  <h1>Feedback</h1>
+  <c:entityTable entity="AppFeedback" filter="orderBy=id&amp;isDesc=true" lifeCycle="none">
+    <c:columns>
+      <c:column label="Email" value="#{appFeedback.email}" width="200" sortable="true" />
+      <c:column label="Feedback" value="#{appFeedback.feedback}" />
+    </c:columns>
+  </c:entityTable>
+
+  <c:panelGroup visibleOnVar="appFeedback">
+
+    <c:entityForm entity="AppFeedback" submittable="false">
+      <c:panelGrid>
+        <c:inputText value="#{appFeedback.email}" label="email" />
+        <c:inputTextarea value="#{appFeedback.feedback}" label="Feedback" />
+      </c:panelGrid>
+    </c:entityForm>
+  </c:panelGroup>
+
+</div>

@@ -1,0 +1,11 @@
+<div xmlns:c="nandhi.app.ui.component">
+
+  <h1>Products</h1>
+
+  <c:splitPane>
+    <c:entityTree id="content-left" entity="ProductCategory" contentLocation="contentRight" contentUrl="/app/module/mdm/catalog/inc/ProductInfo.xhtml?id=#{id}"/>
+    <div id="content-right">
+    </div>
+  
+  </c:splitPane>
+</div>

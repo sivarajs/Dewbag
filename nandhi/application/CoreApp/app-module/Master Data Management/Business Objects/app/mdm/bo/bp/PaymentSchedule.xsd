@@ -1,0 +1,15 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.mdm.bo.bp" xmlns="app.mdm.bo.bp" xmlns:domain="app.bo.core.domain">
+
+	<xsd:complexType name="PaymentSchedule">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long" domain:sequence="Identity"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="description" type="xsd:string" />
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="name" />
+	</xsd:complexType>
+
+    <xsd:element name="paymentSchedule" type="PaymentSchedule"/>
+
+</xsd:schema>

@@ -1,0 +1,40 @@
+<div xmlns:h="nandhi.app.ui.component">
+  
+  <div style="float:right">
+  <table cellpadding="0" cellspacing="5">
+    <tr>
+      <td >Sub Total</td>
+      <td> : Rs</td>
+      <td style="padding-left:4px;text-align:right"> <h:outputText value="#{shoppingBag.subTotal}"/> </td>
+    </tr>
+    <tr>
+      <td>VAT</td>
+      <td> : Rs</td>
+      <td style="padding-left:4px;text-align:right"> <h:outputText value="#{shoppingBag.tax}"/> </td>
+    </tr>
+<!--     <tr>
+      <td>Savings</td>
+      <td> : Rs</td>
+      <td style="padding-left:4px;text-align:right;color:red"><h:outputText value="#{shoppingBag.savings}"/> </td>
+    </tr>
+ -->    <tr>
+      <td>Grand Total</td>
+      <td> : Rs</td>
+      <td style="padding-left:4px;text-align:right"> <h:outputText value="#{shoppingBag.grandTotal}"/> </td>
+    </tr>
+    <tr>
+      <td>Delivery Charge</td>
+      <td> : Rs</td>
+      <td style="padding-left:4px;text-align:right"> <h:outputText value="#{shoppingBag.deliveryCharge}"/> </td>
+    </tr>
+    <tr>
+      <td>Total Amount</td>
+      <td> : Rs</td>
+      <td style="padding-left:4px;text-align:right"> <h:outputText value="#{shoppingBag.totalAmount}"/> </td>
+    </tr>
+  </table>
+  </div>
+  
+  <h:taxSummary/>
+  
+</div>

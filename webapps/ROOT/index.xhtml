@@ -1,0 +1,101 @@
+<c:template src="/common/template/DBHome.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Fresh and Quality Products @ Best Price"/>
+  
+  <c:parameter name="content">
+       
+       <!-- <div style="margin-left:210px">
+         <img src="/imgs/offer.jpg"/>
+       </div> -->
+      <div class="carousel-wrapper">
+	       <div id="carousel" data-jcarousel="true" data-wrap="circular" class="carousel">
+		       <ul>
+		         <li style="width:220px;height:200px"><img src="/imgs/home/1.jpg" width="220" height="198"/></li>
+		         <li style="width:264px;height:200px"><img src="/imgs/home/2.jpg" width="264" height="198"/></li>
+		         <li style="width:298px;height:200px"><img src="/imgs/home/3.jpg" width="200" height="198"/></li>
+		         <li style="width:292px;height:200px"><img src="/imgs/home/4.jpg" width="250" height="198"/></li>
+		         <li style="width:277px;height:200px"><img src="/imgs/home/5.jpg" width="242" height="198"/></li>
+		       </ul>  
+	       </div>
+	       <a data-jcarousel-control="true" data-target="-=1" href="#" class="carousel-control-prev"></a>
+	       <a data-jcarousel-control="true" data-target="+=1" href="#" class="carousel-control-next"></a>
+	   </div>   
+    
+       <script type="text/javascript">
+
+        (function() {
+        	$('[data-jcarousel]').each(function() {
+                var el = $(this);
+                el.jcarousel(el.data());
+            });
+
+            $('[data-jcarousel-control]').each(function() {
+                var el = $(this);
+                el.jcarouselControl(el.data());
+            }); 
+            
+        	initProductThumbnailPage();
+        })();
+      
+       </script>
+       
+       <div style="margin-top:80px;">
+	       <h1>Fruits &amp; Vegetables</h1>
+	       <c:productGrid columns="5" filter="product.productCategory.qualifiedName=[like]/Fruits+%26+Vegetables&amp;isActive=Y&amp;pageSize=5&amp;orderBy=quantity">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+	       </c:productGrid>
+           <div class="ralign"><a href='/category/Fruits+%26+Vegetables'>View All</a></div>
+       
+           <h1>Grocery</h1>
+	       <c:productGrid columns="5" filter="product.productCategory.qualifiedName=[like]/Groceries&amp;isActive=Y&amp;pageSize=5&amp;orderBy=quantity">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+	       </c:productGrid>
+	       <div class="ralign"><a href='/category/Groceries'>View All</a></div>
+	       
+	       <h1>Breads &amp; Dairy Products</h1>
+	       <c:productGrid columns="5" filter="product.productCategory.qualifiedName=[like]/Breads+%26+Dairy Products&amp;isActive=Y&amp;pageSize=5&amp;orderBy=quantity">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+	       </c:productGrid>
+	       <div class="ralign"><a href='/category/Breads+%26+Dairy Products'>View All</a></div>
+	       
+	       <h1>Beverages</h1>
+	       <c:productGrid columns="5" filter="product.productCategory.qualifiedName=[like]/Beverages&amp;isActive=Y&amp;pageSize=5&amp;orderBy=quantity">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+	       </c:productGrid>
+	       <div class="ralign"><a href='/category/Beverages'>View All</a></div>
+	       
+	       <h1>Baby &amp; Child</h1>
+	       <c:productGrid columns="5" filter="product.productCategory.qualifiedName=[like]/Baby+%26+Child&amp;isActive=Y&amp;pageSize=5&amp;orderBy=quantity">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+	       </c:productGrid>
+	       <div class="ralign"><a href='/category/Baby+%26+Child'>View All</a></div>
+	       
+	       <h1>Pet Foods</h1>
+	       <c:productGrid columns="5" filter="product.productCategory.qualifiedName=[like]/Pet Foods&amp;isActive=Y&amp;pageSize=5&amp;orderBy=quantity">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+	       </c:productGrid>
+	       <div class="ralign"><a href='/category/Pet Foods'>View All</a></div>
+       
+       </div>
+       
+       <script type="text/javascript">
+            (function() { 
+            	initProductThumbnailPage();
+             })();
+      </script>
+       
+      <script type="text/javascript">
+            
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-34356141-1']);
+            _gaq.push(['_trackPageview']);
+          
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+ 
+       </script>
+   </c:parameter>
+ </c:template>    

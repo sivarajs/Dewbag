@@ -1,0 +1,19 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.diagnosis" xmlns:c="app.core.bo">
+
+    <xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo"/>
+    
+	<xsd:complexType name="AppFeedback">
+		<xsd:sequence>
+			<xsd:element ref="c:id"/>
+			<xsd:element name="email" type="xsd:string" />
+			<xsd:element name="feedback" type="xsd:string">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5000" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

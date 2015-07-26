@@ -1,0 +1,20 @@
+<div xmlns:c="nandhi.app.ui.component">
+  
+  <h1>Customer Groups</h1>
+   
+   <c:entityTable entity="CustomerGroup">
+    <c:columns>
+       <c:column label="Name" value="#{customerGroup.name}" width="200"/>
+       <c:column label="Discount" value="#{customerGroup.discount}" />
+    </c:columns>
+  </c:entityTable>  
+    
+  <c:panelGroup visibleOnVar="customerGroup">
+    <c:entityForm entity="CustomerGroup">
+      <c:panelGrid columns="1" labelStyle="width:70px">
+        <c:inputText label="Name" value="#{customerGroup.name}"/>
+        <c:inputText label="Discount" value="#{customerGroup.discount}"/>
+      </c:panelGrid>
+    </c:entityForm>
+  </c:panelGroup>  
+</div>

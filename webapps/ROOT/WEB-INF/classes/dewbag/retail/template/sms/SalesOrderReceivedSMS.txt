@@ -1,0 +1,1 @@
+We will deliver your order #{orderReceivedSMS.orderId} on #{orderReceivedSMS.deliveryDate} between #{orderReceivedSMS.deliverySlotStart} and #{orderReceivedSMS.deliverySlotEnd} at #{orderReceivedSMS.deliveryAddress}. The delivery code is #{orderReceivedSMS.deliveryCode}. Thanks for shopping with dewbag.com

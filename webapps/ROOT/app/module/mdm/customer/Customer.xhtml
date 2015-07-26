@@ -1,0 +1,31 @@
+<div xmlns:c="nandhi.app.ui.component">
+
+    <h1>Customers</h1>
+
+	<c:entityTable entity="Customer" lifeCycle="none">
+		<c:columns>
+			<c:column label="Name" value="#{customer.name}" width="200" sortable="true" />
+            <c:column label="Group" value="#{customer.group.name}" width="100" sortable="true" />
+            <c:column label="Landline" value="#{customer.landline}" width="100"/>
+            <c:column label="Mobile" value="#{customer.mobile}" width="100" />
+            <c:column label="Alt Mobile" value="#{customer.altMobile}" width="100"/>
+            <c:column label="Email" value="#{customer.email}" width="200"/>
+			<c:column label="Location" value="#{customer.address.area.name}" />
+		</c:columns>
+	</c:entityTable>
+	<c:panelGroup visibleOnVar="customer">
+
+		<c:entityForm entity="Customer" lifeCycle="none">
+			<c:panelGrid>
+                    <c:inputText value="#{customer.name}" label="Name" />
+                    <c:inputText value="#{customer.address.address1}" label="Address1" />
+                    <c:inputText value="#{customer.address.address2}" label="Address2" />
+                    <c:inputText value="#{customer.address.landmark}" label="Landmark" />
+                    <c:inputText value="#{customer.address.city.name}" label="City" />
+                    <c:inputText value="#{customer.address.state.name}" label="State" />
+                    <c:inputText value="#{customer.address.country.name}" label="Country" />
+                    <c:inputText value="#{customer.address.pin}" label="Pin" />
+			</c:panelGrid>
+		</c:entityForm>
+	</c:panelGroup>
+</div>

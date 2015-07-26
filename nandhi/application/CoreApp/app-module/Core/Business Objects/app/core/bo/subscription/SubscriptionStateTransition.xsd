@@ -1,0 +1,18 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.subscription" xmlns="app.core.bo.subscription" xmlns:r="app.core.bo">
+    
+    <xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo"/>
+    <xsd:import schemaLocation="../PropertyGroup.xsd" namespace="app.core.bo"/>
+    
+	<xsd:complexType name="SubscriptionStateTransistion">
+		<xsd:sequence>
+		    <xsd:element ref="r:id"/>
+		    <xsd:element name="subscriptionID" type="xsd:long"/>
+			<xsd:element ref="nextState"/>
+			<xsd:element name="effectiveFrom" type="xsd:date"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+    <xsd:element name="nextState" type="r:PropertyGroup"/>
+
+     
+</xsd:schema>

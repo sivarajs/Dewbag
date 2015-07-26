@@ -1,0 +1,36 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="dewbag.lifestyle.recipe.bo" xmlns="dewbag.lifestyle.recipe.bo" xmlns:r="app.core.bo" xmlns:c="app.mdm.bo.bp" xmlns:domain="app.bo.core.domain">
+
+	<xsd:import schemaLocation="../../../../../../../../CoreApp/app-module/Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../../../../CoreApp/app-module/Core/Business Objects/app/core/bo/PropertyGroup.xsd" namespace="app.core.bo"/>
+    <xsd:include schemaLocation="RecipeInstruction.xsd"/>
+    <xsd:include schemaLocation="RecipeIngredient.xsd"/>
+
+	<xsd:complexType name="Recipe">
+
+		<xsd:sequence>
+		 <xsd:element ref="r:id"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element ref="mealType"/>
+			<xsd:element ref="mealDiet"/>
+			<xsd:element name="providedBy" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="description" minOccurs="0">
+	            <xsd:simpleType>
+	              <xsd:restriction base="xsd:string">
+	                <xsd:maxLength value="10000" />
+	              </xsd:restriction>
+	            </xsd:simpleType>
+	        </xsd:element>
+			<xsd:element name="preparationTime" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="totalServe" type="xsd:int" minOccurs="0"/>
+			<xsd:element name="tags" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="instructions" type="RecipeInstruction" domain:mappedBy="recipeId" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ingredients" type="RecipeIngredient" domain:mappedBy="recipeId" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="name" />
+	</xsd:complexType>
+    
+    <xsd:element name="mealType" type="r:PropertyGroup"/>
+    <xsd:element name="mealDiet" type="r:PropertyGroup"/>
+    
+</xsd:schema>

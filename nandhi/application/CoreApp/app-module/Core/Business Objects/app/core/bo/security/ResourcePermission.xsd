@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo.security" xmlns="app.core.bo.security" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../AppEntity.xsd" namespace="app.core.bo" />
+    <xsd:include schemaLocation="Role.xsd"/>
+
+	<xsd:complexType name="ResourcePermission">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+					<xsd:element name="resourceConfigId" type="xsd:long" />
+					<xsd:element name="resourceType" type="xsd:long" />
+					<xsd:element name="role" type="Role" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+</xsd:schema>

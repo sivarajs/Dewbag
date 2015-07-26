@@ -1,0 +1,88 @@
+<div xmlns:c="nandhi.app.ui.component">
+  
+  <h1>Recipe</h1>
+   
+   <c:entityTable entity="Recipe">
+    <c:columns>
+       <c:column label="Name" value="#{recipe.name}" width="200"/>
+       <c:column label="Provided By" value="#{recipe.providedBy}" width="150"/>
+       <c:column label="Meal Type" value="#{recipe.mealType.value}" width="150"/>
+       <c:column label="Diet" value="#{recipe.mealDiet.value}" width="150"/>
+       <c:column label="Preparation Time" value="#{recipe.preparationTime}" width="150"/>
+       <c:column label="Serves For" value="#{recipe.totalServe}"/>
+    </c:columns>
+  </c:entityTable>  
+    
+  <c:tabs visibleOnVar="recipe">
+    <c:tab title="Information">
+	    <c:entityForm entity="Recipe">
+	      <c:panelGrid columns="1" labelStyle="width:100px">
+	        <c:inputText label="Name" value="#{recipe.name}"/>
+	        <c:selectOneEntityMenu label="Meal Type" value="#{recipe.mealType.value}" entity="PropertyGroup" filter="name=meal-type"/>
+	        <c:selectOneEntityMenu label="Meal Diet" value="#{recipe.mealDiet.value}" entity="PropertyGroup" filter="name=meal-diet"/>
+	        <c:inputText label="Preparation Time (in Minutes)" value="#{recipe.preparationTime}"/>
+	        <c:inputText label="Serves For" value="#{recipe.totalServe}"/>
+	        <c:inputText label="Tags" value="#{recipe.tags}"/>
+	        <c:inputTextarea label="Description" style="height:200px" value="#{recipe.description}"/>
+	      </c:panelGrid>
+	    </c:entityForm>
+    </c:tab>
+    
+    <c:tab title="Images">
+      <c:entityTable entity="RecipeImage" filter="entityId=#{recipe.id}">
+        <c:columns>
+          <c:column label="Image" value="#{recipeImage.image}" sortable="true" width="400"/>
+        </c:columns>
+      </c:entityTable>
+      <c:panelGroup title="Information" visibleOnVar="productImage">
+        <c:entityForm entity="RecipeImage">
+          <c:inputHidden value="#{recipeImage.entityId}" var="#{recipe.id}" />
+          <c:panelGrid>
+            <c:inputFile value="#{recipeImage.image}" label="Image" />
+            <c:selectBooleanCheckBox value="#{recipeImage.isThumbnail}" label="Is Thumbnail?" />
+          </c:panelGrid>
+        </c:entityForm>
+      </c:panelGroup>
+    </c:tab>
+    
+    <c:tab title="Instructions">
+       
+       <c:entityTable entity="RecipeInstruction">
+	    <c:columns>
+	       <c:column label="Step" value="#{recipeInstruction.step}"/>
+	       <c:column label="Sort Order" value="#{recipeInstruction.sortOrder}" width="200"/>
+	    </c:columns>
+	   </c:entityTable>  
+       <c:panelGroup visibleOnVar="recipeInstruction">
+       
+         <c:entityForm entity="RecipeInstruction">
+              <c:inputHidden value="#{recipeInstruction.recipeId}" var="#{recipe.id}"/>
+		      <c:panelGrid columns="1" labelStyle="width:70px">
+		        <c:inputTextarea label="Instruction" value="#{recipeInstruction.step}"/>
+		        <c:inputText label="Sort Order" value="#{recipeInstruction.sortOrder}"/>
+		      </c:panelGrid>
+	    </c:entityForm>
+       </c:panelGroup>
+       
+    </c:tab>
+    <c:tab title="Ingredients">
+    
+       <c:entityTable entity="RecipeIngredient">
+	    <c:columns>
+	       <c:column label="Ingredient" value="#{recipeIngredient.ingredient}"/>
+	       <c:column label="Sort Order" value="#{recipeIngredient.sortOrder}" width="200"/>
+	    </c:columns>
+	   </c:entityTable>  
+       <c:panelGroup visibleOnVar="recipeIngredient">
+       
+         <c:entityForm entity="RecipeIngredient">
+              <c:inputHidden value="#{recipeIngredient.recipeId}" var="#{recipe.id}"/>
+		      <c:panelGrid columns="1" labelStyle="width:70px">
+		        <c:inputTextarea label="Ingredient" value="#{recipeIngredient.ingredient}"/>
+		        <c:inputText label="Sort Order" value="#{recipeIngredient.sortOrder}"/>
+		      </c:panelGrid>
+	    </c:entityForm>
+       </c:panelGroup>
+    </c:tab>
+  </c:tabs>  
+</div>

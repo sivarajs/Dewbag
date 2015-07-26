@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo" xmlns:domain="app.bo.core.domain">
+
+	<xsd:complexType name="Property">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:long" domain:sequence="Identity"/>
+			<xsd:element name="name" type="xsd:string" />
+			<xsd:element name="type" type="xsd:string" />
+			<xsd:element name="value" type="xsd:string">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="2000" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="uniqueKey" default="name" />
+	</xsd:complexType>
+
+</xsd:schema>

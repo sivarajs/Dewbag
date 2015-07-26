@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo" xmlns="app.core.bo">
+    
+    <xsd:include schemaLocation="AppEntity.xsd"/>
+    
+	<xsd:complexType name="AppHierarchicalEntity" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="AppEntity">
+				<xsd:sequence>
+                    <xsd:element name="name" type="xsd:string"/>
+					<xsd:element name="parentId" type="xsd:long" minOccurs="0"/>
+					<xsd:element name="type" type="xsd:string"/>
+					<!--  Kind indicates the folder, file, etc. -->
+					<xsd:element name="kind" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="hierarchical"/>
+				<xsd:attribute name="uniqueKey" default="parentId,name"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

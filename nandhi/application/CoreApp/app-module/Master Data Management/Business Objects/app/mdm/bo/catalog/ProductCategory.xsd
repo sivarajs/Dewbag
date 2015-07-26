@@ -1,0 +1,27 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.catalog" xmlns="app.mdm.bo.catalog" xmlns:r="app.core.bo" xmlns:a="app.finance.bo" xmlns:domain="app.bo.core.domain">
+
+    <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/AppHierarchicalEntity.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../../Financial Management/Business Objects/app/finance/bo/Tax.xsd" namespace="app.finance.bo"/>
+	<xsd:include schemaLocation="ProductCategoryFeature.xsd"/>
+
+	<xsd:complexType name="ProductCategory">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppHierarchicalEntity">
+				<xsd:sequence>
+					<xsd:element name="qualifiedName" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="sortOrder" type="xsd:integer" minOccurs="0" default="0"/>
+					<xsd:element name="description" type="xsd:string" minOccurs="0" />
+					<xsd:element ref="a:tax" minOccurs="0"/>	
+					<xsd:element name="features" type="ProductCategoryFeature" domain:mappedBy="categoryId" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="isActive" type="xsd:boolean" default="true"/>
+					<xsd:element name="tags" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="hierarchical"/>
+				<xsd:attribute name="uniqueKey" default="qualifiedName"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+    <xsd:element name="productCategory" type="ProductCategory"/>
+    
+</xsd:schema>

@@ -1,0 +1,22 @@
+<c:popup xmlns:c="nandhi.app.ui.component" title="Login" style="width:450px;">
+
+    <c:message id="loginMsg" type="error"/>
+    <form action="/account/login" method="POST" onsubmit="ui.ajaxLoader.showInNode('loginAjaxLoader');" target="db-login-frame">
+     
+       <c:panelGrid>
+          <c:inputText name="userName" label="Email"/>
+          <c:inputSecret name="password" label="Password"/>
+       </c:panelGrid>
+       <c:commandButton value="Login"/>       
+    
+    </form>
+    <div class="separator"/> 
+    <div style="text-align:center;">
+      <div style="float:left;" id="loginAjaxLoader"/>
+      <a href="javascript:;" class="newUser">New User?</a> <a href="javascript:;" class="forgotPass" style="margin-left:10px"> Forgot Password?</a>
+    </div>  
+    <div class="separator"/>
+    
+  <iframe name="db-login-frame" width="0" height="0" style="display:none;"/>
+  
+</c:popup>

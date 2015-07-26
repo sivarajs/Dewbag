@@ -1,0 +1,42 @@
+<application name="DesignerApplication">
+  
+  <binding-component>
+    <resource-class-registry-class>ApplicationResourceClassRegistry</resource-class-registry-class>
+  </binding-component>
+  
+  <application-engine>
+     <resource-repository-class>nandhi.app.resource.repository.DatabaseResourceRepository</resource-repository-class>
+     <resource-lifecycle-listeners>    
+       <resource-lifecycle-listener>dewbag.retail.mdm.catalog.lifecycle.CategoryLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.catalog.lifecycle.ProductLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.catalog.lifecycle.ProductLineItemLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.catalog.lifecycle.ProductImageLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.catalog.lifecycle.ProductLineItemImageLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.customer.lifecycle.CustomerLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.customer.lifecycle.CustomerCartLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.shop.lifecycle.ShoppingCartLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.shop.lifecycle.ShoppingCartLineItemLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.shop.lifecycle.SessionCartLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.lifecycle.UserLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.sales.lifecycle.SalesOrderLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.sales.lifecycle.SalesOrderLineItemLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.sales.lifecycle.PreSalesOrderLineItemLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.sales.lifecycle.SalesOrderReportLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.marketing.lifecycle.ComplimentaryItemLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.marketing.lifecycle.SalesOfferLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.retail.mdm.partner.lifecycle.BusinessPartnerLeadLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.lifestyle.recipe.lifecycle.RecipeLifeCycle</resource-lifecycle-listener>
+       <resource-lifecycle-listener>dewbag.lifestyle.recipe.lifecycle.RecipeImageLifeCycle</resource-lifecycle-listener>
+     </resource-lifecycle-listeners>     
+  </application-engine>
+
+  <persistent-store>
+    <persistent-unit>retail-domain</persistent-unit>
+  </persistent-store>
+  
+  <properties>
+    <property name="app.domain">localhost</property>
+    <property name="app.http.ssl.port">9443</property>
+  </properties>
+  
+</application>

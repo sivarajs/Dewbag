@@ -1,0 +1,10 @@
+<div xmlns:c="nandhi.app.ui.component">
+
+  <h1>Product Suggestions</h1>
+  <c:entityTable entity="ProductSuggestion">
+		<c:columns>
+			<c:column label="Email" value="#{productSuggestion.email}" width="200" />
+			<c:column label="Suggestion" value="#{productSuggestion.suggestion}"/>
+		</c:columns>
+	</c:entityTable>
+</div>

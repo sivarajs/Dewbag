@@ -1,0 +1,19 @@
+
+<div xmlns:c="nandhi.app.ui.component">
+  <div id="goToTop" class="bfItem">
+     <span>Go To Top</span>
+  </div>
+  <div id="feedback" class="bfItem" onclick="ui.popup.showById('feedbackInfo','feedback')" >
+     <span>Feedback</span>
+  </div>
+  <c:popup id="feedbackInfo" title="Your Feedback" >
+      <c:entityForm entity="AppFeedback" lifeCycle="none" submitButtonLabel="Submit" submitButtonStyle="text-align:center" successMsg="Thanks for providing your feedback">
+      
+        <c:panelGrid>
+             <c:inputText id="fbEmail" label="Email" value="#{appFeedback.email}" required="true" default="#{session.user.name}"/>
+             <c:inputTextarea  id="fbFB" label="Feedback" value="#{appFeedback.feedback}" required="true"/>
+        </c:panelGrid>
+      </c:entityForm>
+  </c:popup>
+</div>      
+      

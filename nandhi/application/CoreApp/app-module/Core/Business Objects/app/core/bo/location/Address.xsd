@@ -1,0 +1,31 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.location" xmlns="app.core.bo.location" xmlns:r="app.core.bo" xmlns:domain="app.domain.model">
+    
+    <xsd:import schemaLocation="../BOCommon.xsd" namespace="app.core.bo"/>
+    <xsd:include schemaLocation="CityArea.xsd"/>
+    <xsd:include schemaLocation="City.xsd"/>
+    <xsd:include schemaLocation="State.xsd"/>
+    <xsd:include schemaLocation="Country.xsd"/>
+    
+	<xsd:complexType name="Address" >
+		<xsd:sequence>
+			<xsd:element ref="r:id"/>
+			<xsd:element name="address1" type="xsd:string"/>
+			<xsd:element name="address2" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="landmark" type="xsd:string" minOccurs="0"/>
+            <xsd:element ref="area"/>
+			<xsd:element ref="city"/>
+			<xsd:element ref="state"/>
+			<xsd:element ref="country"/>
+			<xsd:element name="pin">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="latlng" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+    <xsd:element name="area" type="CityArea"/>
+</xsd:schema>

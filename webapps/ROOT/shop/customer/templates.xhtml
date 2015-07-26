@@ -1,0 +1,28 @@
+<c:template src="/common/template/Customer.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="content">
+    
+     <div>
+                
+          <c:entityTable title="Your Templates" entity="CustomerTemplate" filter="customerId=#{session.user.resourceId}&amp;orderBy=name" removeable="true" lifeCycle="none">
+            <c:columns>
+              <c:column value="#{customerTemplate.name}" label="Name"/>
+              <c:column value="#{customerTemplate.createdOn}" label="Created On" width="100px"/>
+              <c:column label="Add To Cart" width="100" href='javascript:createShoppingCart("CustomerTemplate",#{customerTemplate.id})' value="Add To Cart"/>
+            </c:columns>  
+          </c:entityTable>
+          
+        <c:panelGroup title="Items in the selected template" visibleOnVar="customerTemplate">
+             
+             <c:entityTable entity="CustomerTemplateLineItem" filter="cartId=#{customerTemplate.id}" lifeCycle="none" contentStyle="max-height:10000px;" removeable="true">
+              <c:columns>
+                <c:column value="#{customerTemplateLineItem.productLineItem.product.brand} #{customerTemplateLineItem.productLineItem.product.name} #{customerTemplateLineItem.productLineItem.quantity} #{customerTemplateLineItem.productLineItem.unitOfMeasure.value}" label="Product"/>
+                <c:column value="#{customerTemplateLineItem.quantity}" label="Quantity" width="100px"/>
+              </c:columns>  
+            </c:entityTable>
+          
+          </c:panelGroup>
+     </div> 
+    
+  </c:parameter>
+</c:template>

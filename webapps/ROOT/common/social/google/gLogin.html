@@ -1,0 +1,57 @@
+<html>
+
+  <head>
+   <title>Quality Products @ Best Price</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Pragma" content="no-cache" />
+   <meta http-equiv="Cache-Control"
+    content="no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0" />
+   <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+ 
+   <script src="/common/js/db1.js?1.1" type="text/javascript"></script>
+   <script src="/common/js/db2.js?1.1" type="text/javascript"></script>
+   <script type="text/javascript"><!--
+   
+   function callback(r,at) {
+
+	   if (r) {
+          
+           var email = r.email; 
+           loginSocial(email,at);
+           //window.opener.location = "/";
+       }
+       else alert("Unable to login");
+       window.UID = window.getCookie("UID");
+       window.close();
+   }
+
+   
+   window.onDocReady(function() {
+      var href = window.location.href;
+      
+      if (href.indexOf("#") != -1) {
+          
+        var props = window.location.hash.substring(1).getProperties("&","=");
+        var at = props["access_token"];
+
+        $.getJSON('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + at + '&callback=?', function (response) {
+            try {
+             callback(response,at);
+            }catch (e) {alert(e)}
+        });
+      }
+      else {
+    	  
+        //var props = href.substring(href.indexOf("?")+1).getProperties("&","=");
+          window.close();
+        
+      }       
+    });
+-->   </script>
+      
+  </head>
+  
+  <body>
+
+  </body>
+</html>  

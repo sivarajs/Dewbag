@@ -1,0 +1,37 @@
+<c:template src="/common/template/Customer.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="content">
+    
+      <div class="accContent">
+          <h1>Addresses</h1>
+          <c:entityTable id="custAddressTable" entity="CustomerAddress" filter="customerId=#{session.user.resourceId}" removeable="true" lifeCycleOps="cd" var="customerAddress">
+            <c:columns>
+              <c:column label="Address1" value="#{customerAddress.address.address1}" sortable="true" />
+              <c:column label="Area" value="#{customerAddress.address.area.name}" width="150" sortable="true" />
+              <c:column label="City" value="#{customerAddress.address.city.name}" width="80" sortable="true" />
+              <c:column label="Primary?" value="#{customerAddress.isPrimary}" width="50" sortable="true" />
+              <c:column label="Make Primary" width="100" href='javascript:action.makeAddressPrimary(#{customerAddress.id});' value="Make Primary"/>
+            </c:columns>
+          </c:entityTable>
+        
+          <c:panelGroup title="Address" visibleOnVar="customerAddress">
+        
+            <c:entityForm entity="CustomerAddress" supports="cu">
+              <c:inputHidden value="#{customerAddress.customerId}" default="#{session.user.resourceId}"/>
+              <c:inputHidden value="#{customerAddress.address.id}"/>
+              <c:panelGrid>
+                <c:inputText label="Address1" value="#{customerAddress.address.address1}"/>
+                <c:inputText label="Address2" value="#{customerAddress.address.address2}"/>
+                <c:inputText label="Landmark" value="#{customerAddress.address.landmark}"/>
+                <c:selectOneEntityMenu value="#{customerAddress.address.area.name}" label="Area" entity="CityArea" filter="cityId=1&amp;orderBy=name"/>
+                <c:selectOneEntityMenu value="#{customerAddress.address.city.name}" label="City" entity="City" filter="countryId=1&amp;stateId=18"/>
+                <c:selectOneEntityMenu value="#{customerAddress.address.state.name}" label="State" entity="State" filter="countryId=1"/>
+                <c:selectOneEntityMenu value="#{customerAddress.address.country.name}" label="Country" entity="Country"/>
+                <c:inputText label="Pin" value="#{customerAddress.address.pin}" length="6" regExp="^[0-9]+$"/>
+              </c:panelGrid>
+            </c:entityForm>
+          </c:panelGroup>
+
+      </div>
+  </c:parameter>
+</c:template>

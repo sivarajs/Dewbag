@@ -1,0 +1,7 @@
+<ProductItem>
+   <attribute name="product.name" label="Product Name"/>
+   <attribute name="quantity" label="Quantity"/>
+   <attribute name="unitOfMeasure.value" label="Unit Of Measure"/>
+   <attribute name="mrp" label="MRP"/>
+   <attribute name="price" label="Selling Price"/>
+</ProductItem>

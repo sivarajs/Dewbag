@@ -1,0 +1,2 @@
+C:/application/apache-tomcat-7.0.34/webapps/fw/js/thirdparty/jquery/jquery-1.9.1.min.js
+C:/application/apache-tomcat-7.0.34/webapps/fw/js/thirdparty/jquery/jquery-ui-1.10.1/js/jquery-ui-1.10.1.custom.min.js

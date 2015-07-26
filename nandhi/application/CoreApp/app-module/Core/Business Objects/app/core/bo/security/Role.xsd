@@ -1,0 +1,21 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo.security" xmlns="app.core.bo.security" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../AppEntity.xsd" namespace="app.core.bo" />
+
+	<xsd:complexType name="Role">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string" />
+					<xsd:element name="home" type="xsd:string" />
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="name"/>
+			</xsd:extension>
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+   <xsd:element name="role" type="Role"/> 
+
+</xsd:schema>

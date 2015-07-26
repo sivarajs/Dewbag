@@ -1,0 +1,33 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component">
+
+   <c:parameter name="content">
+
+        <script type="text/javascript">
+
+            function postSellerInfoSave(sellerInfo) {
+                
+              comp.messageBox.show("Thanks for contacting us. We will get back to you within 24 hours");
+              
+            }     
+         </script>
+                   
+    
+    
+    
+         <h1>Contact Us</h1>
+            <p>Thanks for your interest in selling your products with dewbag.com.</p>
+            <p> Please provide the following details. We will get back to you within 24 hours</p>
+         
+            <c:entityForm entity="BusinessPartnerLead" submitButtonLabel="Send Message" successMsg="Thanks for contacting us">
+               <c:panelGrid>
+                    <c:inputText label="Name" value="#{businessPartnerLead.company}"/>
+                    <c:inputText label="Contact Person" value="#{businessPartnerLead.contactPerson}"/>
+                    <c:inputText label="Email" value="#{businessPartnerLead.email}"/>
+                    <c:inputText label="Landline" value="#{businessPartnerLead.landline}"/>
+                    <c:inputText label="Mobile" value="#{businessPartnerLead.mobile}"/>
+                    <c:inputTextarea label="Message" value="#{businessPartnerLead.message}"/>
+               </c:panelGrid>
+            </c:entityForm>
+            
+    </c:parameter>
+</c:template>    

@@ -1,0 +1,95 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component" xmlns:b="nandhi.app.ui.block">
+
+   <c:variable name="page.title" value="Fresh and quality products at the best price"/>
+
+  <c:parameter name="head">
+    <style type="text/css">
+      .imageGallery .next {
+        left:290px;
+      }
+    </style>
+  </c:parameter>
+  
+  <c:parameter name="content">
+     <div class="productInfo" id="productInfo-#{productLineItem.id}">
+
+        <c:productBreadCrumb styleClass="breadCrumb"/>
+      
+        <h1>#{productLineItem.product.name} #{productLineItem.quantity} #{productLineItem.unitOfMeasure.value}</h1>
+        <div class="productTop">
+           <div class="productTNImage">
+              <c:productImageGallery productLineItemId="#{productLineItem.id}" productId="#{productLineItem.product.id}" width="300" height="200"/>
+           </div>
+           <div class="productTopInfo">
+               <c:productTags/>
+               <br/>
+	           <p class="productRating">
+	             <span class="productRating1" style="width:40px"></span>
+	           </p>
+	           <table>
+	                  <tr>
+	                     <td align='left'>
+	                        MRP : 
+	                     </td>
+	                     <td align="left">
+	                        Rs <c:outputText value="#{productLineItem.mrp}"/>
+	                      </td>
+	                  </tr>
+	                  <tr>
+	                     <td align='left'>
+	                        You Pay :
+	                     </td>
+	                     
+	                     <td align="left">   
+	                        Rs <c:outputText value="#{productLineItem.price}"/>
+	                      </td>
+	                  </tr>
+	                  <b:if condition="#{productLineItem.discount} != 0.0">
+		                  <tr>
+		                     <td align='left'>
+		                        Your Savings :
+		                     </td>
+		                     <td align="left">   
+		                        Rs <c:outputText value="#{productLineItem.savings}"/>
+		                        <span style="color:red">(<c:outputText value="#{productLineItem.discount}%" />)</span>
+		                      </td>
+		                  </tr>
+	                  </b:if>
+	            </table>
+	            
+	            <c:include src="/shop/product/inc/Buy.xhtml"/>
+           </div>
+        </div>   
+        
+        <h2>Product Description</h2>
+        <p>#{productLineItem.product.description}</p>
+           
+        <c:productFeatures productId="#{productLineItem.product.id}"/>
+     </div>
+     
+     <c:entityGrid columns="4" entity="ProductLineItem" filter="product.id=#{productLineItem.product.id}&amp;id=[&lt;>]#{productLineItem.id}&amp;isActive=Y&amp;orderBy=sortOrder" style="margin-bottom:10px;">
+        <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/>
+     </c:entityGrid>
+     
+     <script type="text/javascript">
+            (function() { 
+            	initProductThumbnailPage();
+             })();
+      </script>
+     
+     
+     <div id="fb-root"></div>
+        <script>
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&amp;appId=430895296971701";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        </script>
+      <h2>Comments</h2>
+      <c:fbComments data-num-posts="50" data-width="990"/>
+      
+  </c:parameter>
+</c:template>

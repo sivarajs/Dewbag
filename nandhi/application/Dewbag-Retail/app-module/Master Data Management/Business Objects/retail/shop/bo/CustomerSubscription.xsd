@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="retail.shop.bo" xmlns="retail.shop.bo" xmlns:c="app.core.bo" xmlns:s="app.core.bo.subscription">
+
+	<xsd:import schemaLocation="../../../../../../../CoreApp/app-module/Core/Business Objects/app/core/bo/subscription/Subscription.xsd" namespace="app.core.bo.subscription"/>
+    <xsd:include schemaLocation="CustomerTemplate.xsd"/>
+    <xsd:include schemaLocation="CustomerSubscription.xsd"/>
+    
+	<xsd:complexType name="CustomerSubscription">
+		<xsd:complexContent>
+			<xsd:extension base="s:Subscription">
+				<xsd:sequence>
+				    <xsd:element name="customerId" type="xsd:long"/>
+					<xsd:element ref="customerTemplate"/>
+					<!-- <xsd:element ref="subscriptionSchedule"/> -->
+				</xsd:sequence>
+				<xsd:attribute name="uniqueKey" default="name,customerId"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

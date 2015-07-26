@@ -1,0 +1,30 @@
+<div xmlns:c="nandhi.app.ui.component" xmlns:b="nandhi.app.ui.block">
+   
+   <div style="margin:10px 0;">
+   <a onclick="clearShoppingCart();return false;" href="javascript:;">Clear Your Shopping Bag</a>
+   </div>
+   <c:entityTable entity="ShoppingCartLineItem" params="checkout" numberable="true" removeable="true" contentStyle="max-height:10000px;" lifeCycle="none">
+          <c:columns>
+            <c:column label="Product" value="#{shoppingCartLineItem.productLineItem.product.brand} #{shoppingCartLineItem.productLineItem.product.name} #{shoppingCartLineItem.productLineItem.quantity} #{shoppingCartLineItem.productLineItem.unitOfMeasure.value}" 
+               sortable="true" href="/product#{shoppingCartLineItem.productLineItem.product.productCategory.qualifiedName}/#{shoppingCartLineItem.productLineItem.product.brand}~#{shoppingCartLineItem.productLineItem.product.name}/#{shoppingCartLineItem.productLineItem.quantity} #{shoppingCartLineItem.productLineItem.unitOfMeasure.value}" />
+            <c:column label="Quantity" value="#{shoppingCartLineItem.quantity}" width="70" sortable="true" align="center" editable="true" onInputChange="addToCart" />
+            <c:column label="MRP" value="#{shoppingCartLineItem.productLineItem.mrp}" width="70" align="right" />
+            <c:column label="Discount" value="#{shoppingCartLineItem.productLineItem.discount}#{shoppingCartLineItem.productLineItem.discountType.value}" width="70" align="right" />
+            <c:column label="Your Price" value="#{shoppingCartLineItem.productLineItem.price}" width="70" align="right" />
+            <c:column label="Savings" value="#{shoppingCartLineItem.productLineItem.savings}" width="70" align="right" />
+            <c:column label="Total Price" value="#{shoppingCartLineItem.totalPrice}" width="70" align="right" />
+          </c:columns>
+       
+   </c:entityTable>
+   <table style="width:100%">
+     <tr>
+       <td align="right">
+	      <c:cartFooter />
+	      <div class="clr"/>
+	      <b:if condition="#{order.pointsEarned} != null">
+	        <p style="font-weight:bold;text-align:right;" >Loyalty Points Earned : #{order.pointsEarned} </p>
+	      </b:if>  
+      </td>
+      </tr>
+   </table>  
+</div>

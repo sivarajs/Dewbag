@@ -1,0 +1,19 @@
+<c:template src="/common/template/Customer.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:parameter name="content">
+
+      <c:entityTable title="Your Orders" entity="SalesOrder" filter="customer.id=#{session.user.resourceId}&amp;orderBy=placedOn&amp;isDesc=true" contentStyle="max-height:10000px" lifeCycle="none">
+        <c:columns>
+          <c:column value="#{salesOrder.orderId}" label="Order No." width="120"/>
+          <c:column value="#{salesOrder.deliveryDate}" label="Delivery Date" width="75" />
+          <c:column value="#{salesOrder.deliverySlot.startTime}#{salesOrder.deliverySlot.startAmPm} - #{salesOrder.deliverySlot.endTime}#{salesOrder.deliverySlot.endAmPm}" label="Delivery Slot" width="90" />      
+          <c:column value="#{salesOrder.placedOn}" label="Placed On" width="135" />
+          <c:column value="#{salesOrder.state.status}" label="Status" width="120" />
+          <c:column label="View" width="30" href="/order/?orderId=#{salesOrder.id}" value="View"/>
+          <c:column label="Add To Cart" width="100" href='javascript:createShoppingCart("SalesOrder",#{purchaseOrder.id})' value="Add To Cart"/>
+        </c:columns>
+      </c:entityTable>
+
+  </c:parameter>
+
+</c:template>

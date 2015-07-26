@@ -1,0 +1,13 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.mdm.bo.bp" xmlns="app.mdm.bo.bp" xmlns:r="app.core.bo">
+  
+  <xsd:import schemaLocation="../../../../../../Core/Business Objects/app/core/bo/BOCommon.xsd" namespace="app.core.bo"/>
+  
+   <xsd:complexType name="CustomerLoyalty">
+        <xsd:sequence>
+          <xsd:element ref="r:id"/>
+          <xsd:element name="customerId" type="xsd:long" />
+          <xsd:element name="points" type="xsd:int" minOccurs="0" default="0" />
+        </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

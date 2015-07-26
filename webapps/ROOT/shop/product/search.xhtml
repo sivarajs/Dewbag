@@ -1,0 +1,25 @@
+<c:template src="/common/template/DB.xml" xmlns:c="nandhi.app.ui.component">
+
+  <c:variable name="page.title" value="Shop Everything Online"/>
+
+  <c:parameter name="content">
+    <div style="margin-left:10px">
+     <h1>Products matching the query "#{query.q}"</h1>
+     <div id="itemsDiv">
+	     <c:productGrid columns="4" filter="searchTerms=[like]#{query.q}&amp;isActive=Y&amp;orderBy=sortOrder" style="margin-left:5px">
+	         <c:include src="/shop/category/inc/ProductThumbNail.xhtml"/> 
+	       </c:productGrid>
+	    </div>  
+	 </div>
+	 <div id="pageLoader" page="1">
+        <div id="ajaxPageLoader" style="float:left;width:20px;"/>
+        <c:outputLink style="margin-left:20px" value="#{store.root}/product/items.xhtml&#63;q=#{query.q}" id="nextPageLink" escape="true" onclick="return false;">Loading Next Page...</c:outputLink>
+     </div>    
+    <script type="text/javascript">
+            (function() { 
+            	initProductThumbnailPage();
+            	productPageLoader.init(); 
+             })();
+     </script>
+  </c:parameter>
+</c:template>

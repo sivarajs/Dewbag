@@ -1,0 +1,15 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo" xmlns="app.core.bo">
+    
+    <xsd:include schemaLocation="AppHierarchicalEntity.xsd"/>
+    
+	<xsd:complexType name="HierarchicalEntity">
+		<xsd:complexContent>
+			<xsd:extension base="AppHierarchicalEntity">
+				<xsd:sequence>
+					<xsd:element name="viewUri" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

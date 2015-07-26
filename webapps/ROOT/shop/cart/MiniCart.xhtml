@@ -1,0 +1,49 @@
+<div xmlns:c="nandhi.app.ui.component" id="miniCart">
+
+  <div class="mcHead">
+   <div class="bag"></div>
+   Your Shopping Cart (<span id="mcartCount">0</span>)
+   <div class="mcHeadRight">
+   <a href="javascript:;" class="closeable" onclick="$('#miniCart').fadeOut(500);">X</a>
+   <a href="javascript:;" id="mcMin" onclick="$('.mcBody').fadeOut(500); $('#mcMin').hide(); $('#mcMax').show(); return false;">Minimize</a>
+   <a href="javascript:;" id="mcMax" onclick="$('.mcBody').fadeIn(500); $('#mcMax').hide(); $('#mcMin').show(); return false;">Maximize</a> 
+    </div>
+  </div>
+  <div class="mcBody">
+    <table class="ihead">
+      <tbody>
+        <tr>
+          <td width="25">No.</td>
+          <td>Item</td>
+          <td width="25">Qty</td>
+          <td width="35">Total</td>
+          <td width="35">Saving</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <table class="ibody" cellpadding="0" cellspacing="0">
+      <tbody id="mcItems">
+       <tr></tr>
+      </tbody>
+    </table>
+   </div> 
+    <table class="fbody" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr >
+          <td colspan="3">Total</td>
+          <td class="rtd" id="mcTotalPrice"></td>
+          <td class="rtd" id="mcSavings"></td>
+        </tr>
+      </tbody>
+    </table>     
+  <div class="mcFoot">
+     <div>
+	     <div id="ajaxMCLoader"/>
+	     <div class="ralign">
+	        <a href="/shop/cart/" class='mcViewCart'>View Cart</a> <a href="javasript:;" onclick="checkout(event);return false;">Checkout</a>
+	     </div>
+     </div>
+     <div id="mcMsg"></div>
+  </div> 
+</div>

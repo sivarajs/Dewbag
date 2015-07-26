@@ -1,0 +1,30 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="app.sales.bo" xmlns="app.sales.bo" xmlns:r="app.core.bo" xmlns:c="app.mdm.bo.bp" xmlns:co="app.core.bo.location">
+
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/AppEntity.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/AppEntityState.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/PropertyGroup.xsd" namespace="app.core.bo"/>
+	<xsd:import schemaLocation="../../../../../Core/Business Objects/app/core/bo/location/Address.xsd" namespace="app.core.bo.location"/>
+	<xsd:import schemaLocation="../../../../../Master Data Management/Business Objects/app/mdm/bo/bp/Customer.xsd" namespace="app.mdm.bo.bp"/>
+    <xsd:include schemaLocation="DeliverySlot.xsd"/>
+    
+	<xsd:complexType name="OfflineSalesOrder">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+					<xsd:element ref="c:customer"/>
+					<xsd:element name="placedOn" type="xsd:dateTime" />
+					<xsd:element ref="state"/>
+					<xsd:element ref="deliveryAddress" minOccurs="0"/>
+					<xsd:element name="deliveryDate" type="xsd:date" minOccurs="0"/>
+					<xsd:element ref="deliverySlot" minOccurs="0"/>
+					<xsd:element name="notes" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>				
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+    <xsd:element name="deliverySlot" type="DeliverySlot"/>
+    <xsd:element name="state" type="r:AppEntityState"/>
+    <xsd:element name="deliveryAddress" type="co:Address"/>
+</xsd:schema>

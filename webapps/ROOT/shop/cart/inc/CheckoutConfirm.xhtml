@@ -1,0 +1,13 @@
+<c:dialog id="coConfirmDlg" title="Confirm Checkout" xmlns:c="nandhi.app.ui.component" style="width:500px;">
+    <h2>Shipping Address</h2>
+    <div id="dlgSA"></div>
+    <h2>Preferred Delivery Slot</h2>
+    <div id="dlgDL"></div>
+    <h2>Payment Mode</h2>
+    <div id="dlgPM"></div>
+    <br/>
+    <div class='buttonGrp'>
+      <button onclick="performCheckout()">Checkout</button>
+      <button onclick="ui.dialog.hideById('coConfirmDlg')">Close</button>
+    </div>
+</c:dialog>

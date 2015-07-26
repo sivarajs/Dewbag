@@ -1,0 +1,16 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="app.core.bo.enterprise" xmlns="app.core.bo.enterprise" xmlns:r="app.core.bo">
+    
+    <xsd:import schemaLocation="../AuditableEntity.xsd" namespace="app.core.bo"/>
+    
+   <xsd:complexType name="Organization">
+		<xsd:complexContent>
+			<xsd:extension base="r:AuditableEntity">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string"/>
+					<xsd:element name="description" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>		
+	</xsd:complexType>
+
+</xsd:schema>

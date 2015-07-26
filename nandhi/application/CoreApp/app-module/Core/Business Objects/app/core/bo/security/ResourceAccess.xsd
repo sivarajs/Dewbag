@@ -1,0 +1,25 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="app.core.bo.security" xmlns="app.core.bo.security" xmlns:domain="app.bo.core.domain" xmlns:r="app.core.bo">
+
+	<xsd:import schemaLocation="../AppEntity.xsd" namespace="app.core.bo" />
+	<xsd:include schemaLocation="ResourcePermission.xsd" />
+
+	<xsd:complexType name="ResourceAccess">
+		<xsd:complexContent>
+			<xsd:extension base="r:AppEntity">
+				<xsd:sequence>
+					<xsd:element name="resourcePattern" type="xsd:string" />
+					<!-- Entity or Resource such as xhtml, or resource url -->
+					<xsd:element name="resourceType" type="xsd:string" />
+					<!-- ssl -->
+					<xsd:element name="accessType" type="xsd:string" />
+					<!-- login is required? -->
+					<xsd:element name="isProtected" type="xsd:boolean" />
+					<xsd:element name="permissions" type="ResourcePermission" domain:mappedBy="resourceConfigId" minOccurs="0" maxOccurs="unbounded"/>					
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+
+	</xsd:complexType>
+
+</xsd:schema>
